@@ -31,9 +31,7 @@ fun SetupScreen(
     }
 
     Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(Background),
+        modifier = Modifier.fillMaxSize().background(Background),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -41,37 +39,14 @@ fun SetupScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier.width(900.dp).padding(32.dp)
         ) {
-            // Illustration
-            Box(
-                modifier = Modifier
-                    .size(120.dp)
-                    .background(Color(0xFF1E3A5F), RoundedCornerShape(16.dp)),
-                contentAlignment = Alignment.Center
-            ) {
-                Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Box(
-                        modifier = Modifier
-                            .size(60.dp, 44.dp)
-                            .background(Color(0xFF2E5A8F), RoundedCornerShape(8.dp)),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .size(20.dp)
-                                .background(Color(0xFFE53935), shape = androidx.compose.foundation.shape.CircleShape),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Text("▶", color = Color.White, fontSize = 8.sp)
-                        }
-                    }
-                    Spacer(Modifier.height(4.dp))
-                    Row(horizontalArrangement = Arrangement.spacedBy(4.dp)) {
-                        repeat(4) {
-                            Box(modifier = Modifier.size(12.dp, 18.dp).background(Color(0xFFE53935), RoundedCornerShape(topStart = 8.dp, topEnd = 8.dp)))
-                        }
-                    }
-                }
-            }
+            // Logo text
+            Text(
+                text = "SHooF",
+                color = TextPrimary,
+                fontSize = 52.sp,
+                fontWeight = FontWeight.ExtraBold,
+                letterSpacing = 4.sp
+            )
 
             Spacer(Modifier.height(8.dp))
 
@@ -84,7 +59,6 @@ fun SetupScreen(
                 modifier = Modifier.fillMaxWidth()
             )
 
-            // Form grid
             Row(
                 horizontalArrangement = Arrangement.spacedBy(12.dp),
                 modifier = Modifier.fillMaxWidth()
@@ -159,13 +133,6 @@ fun SetupScreen(
                     }
                 }
             }
-
-            Text(
-                text = "تسجيل الدخول باستخدام الرابط (غير موصى به)",
-                color = TextMuted,
-                fontSize = 13.sp,
-                textAlign = TextAlign.Center
-            )
         }
     }
 
