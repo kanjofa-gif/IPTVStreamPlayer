@@ -60,10 +60,11 @@ fun LiveScreen(
                                     name = stream.name,
                                     icon = stream.stream_icon,
                                     onClick = {
+                                        val url = state.streamUrl(stream.stream_id)
                                         onPlayStream(
                                             "live",
                                             stream.stream_id.toString(),
-                                            state.streamUrl(stream.stream_id),
+                                            url,
                                             stream.name,
                                             stream.stream_icon
                                         )
