@@ -2,6 +2,7 @@ package com.iptvstream.ui.screens.home
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -30,7 +31,7 @@ fun HomeScreen(
                 onContinueWatchingClick = { onNavigate("player") }
             )
 
-            Divider(color = com.iptvstream.ui.theme.Divider, thickness = 0.5.dp)
+            HorizontalDivider(color = com.iptvstream.ui.theme.Divider, thickness = 0.5.dp)
 
             Column(
                 modifier = Modifier
@@ -39,7 +40,6 @@ fun HomeScreen(
                     .padding(vertical = 16.dp),
                 verticalArrangement = Arrangement.spacedBy(24.dp)
             ) {
-                // Recently watched live channels
                 if (state.recentLive.isNotEmpty()) {
                     SectionRow(title = "البث المباشر") {
                         HorizontalScrollRow(
@@ -57,7 +57,6 @@ fun HomeScreen(
                     }
                 }
 
-                // Latest movies
                 if (state.latestMovies.isNotEmpty()) {
                     SectionRow(title = "الأفلام") {
                         HorizontalScrollRow(
@@ -79,7 +78,6 @@ fun HomeScreen(
                     }
                 }
 
-                // Latest series
                 if (state.latestSeries.isNotEmpty()) {
                     SectionRow(title = "المسلسلات") {
                         HorizontalScrollRow(
@@ -100,7 +98,6 @@ fun HomeScreen(
             }
         }
 
-        // Settings drawer
         if (state.isDrawerOpen) {
             SettingsDrawer(
                 isVisible = true,
