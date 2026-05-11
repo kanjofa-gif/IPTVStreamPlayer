@@ -3,6 +3,7 @@ package com.iptvstream.ui.screens.live
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -38,10 +39,9 @@ fun LiveScreen(
                 onSettingsClick = onSettingsClick,
                 onContinueWatchingClick = {}
             )
-            Divider(color = Divider, thickness = 0.5.dp)
+            HorizontalDivider(color = Divider, thickness = 0.5.dp)
 
             Row(modifier = Modifier.fillMaxSize()) {
-                // Channels grid (LEFT - larger area)
                 Box(modifier = Modifier.weight(1f).fillMaxHeight()) {
                     if (state.isLoading) {
                         LoadingState()
@@ -72,7 +72,6 @@ fun LiveScreen(
                     }
                 }
 
-                // Categories list (RIGHT)
                 Column(
                     modifier = Modifier
                         .width(260.dp)
@@ -80,7 +79,6 @@ fun LiveScreen(
                         .background(SurfaceVariant)
                         .padding(8.dp)
                 ) {
-                    // Search box
                     OutlinedTextField(
                         value = state.searchQuery,
                         onValueChange = viewModel::onSearch,
