@@ -35,12 +35,7 @@ fun PlayerScreen(
     onBack: () -> Unit
 ) {
     val context = LocalContext.current
-    val state by viewModel.state.collectAsState()
     var isControlsVisible by remember { mutableStateOf(true) }
-
-    LaunchedEffect(url) {
-        viewModel.setUrl(url, title, icon)
-    }
 
     val exoPlayer = remember {
         ExoPlayer.Builder(context).build().also { player ->
@@ -67,11 +62,7 @@ fun PlayerScreen(
             delay(10000)
             if (exoPlayer.isPlaying) {
                 viewModel.saveProgress(
-                    id = id,
-                    name = title,
-                    icon = icon,
-                    url = url,
-                    type = type,
+                    id = id, name = title, icon = icon, url = url, type = type,
                     position = exoPlayer.currentPosition,
                     duration = exoPlayer.duration.takeIf { it > 0 } ?: 0
                 )
@@ -82,11 +73,7 @@ fun PlayerScreen(
     DisposableEffect(Unit) {
         onDispose {
             viewModel.saveProgress(
-                id = id,
-                name = title,
-                icon = icon,
-                url = url,
-                type = type,
+                id = id, name = title, icon = icon, url = url, type = type,
                 position = exoPlayer.currentPosition,
                 duration = exoPlayer.duration.takeIf { it > 0 } ?: 0
             )
