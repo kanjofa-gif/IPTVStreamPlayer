@@ -16,7 +16,8 @@ data class PlayerState(
     val streamIcon: String = "",
     val savedPosition: Long = 0L,
     val duration: Long = 0L,
-    val isLoading: Boolean = true
+    val isLoading: Boolean = true,
+    val error: String? = null
 )
 
 @HiltViewModel
@@ -29,58 +30,71 @@ class PlayerViewModel @Inject constructor(
 
     fun loadStream(type: String, id: String) {
         viewModelScope.launch {
-            _state.value = _state.value.copy(isLoading = true)
-            val playlist = repository.getSelectedPlaylist() ?: return@launch
-
-            val url = when (type) {
-                "live" -> repository.buildStreamUrl(playlist, id.toIntOrNull() ?: 0)
-                "movie" -> {
-                    val streams = repository.getVodStreams(playlist).getOrDefault(emptyList())
-                    val stream = streams.find { it.stream_id == id.toIntOrNull() }
-                    if (stream != null)
-                        repository.buildVodUrl(playlist, stream.stream_id, stream.container_extension)
-                    else ""
+            try {
+                _state.value = _state.value.copy(isLoading = true, error = null)
+                val playlist = repository.getSelectedPlaylist() ?: run {
+                    _state.value = _state.value.copy(isLoading = false, error = "لا توجد قائمة تشغيل")
+                    return@launch
                 }
-                else -> ""
+
+                val streamId = id.toIntOrNull() ?: 0
+
+                val url = when (type) {
+                    "live" -> repository.buildStreamUrl(playlist, streamId)
+                    "movie" -> repository.buildVodUrl(playlist, streamId, "mkv")
+                    "series" -> repository.buildSeriesUrl(playlist, streamId, "mkv")
+                    else -> ""
+                }
+
+                val name = when (type) {
+                    "live" -> {
+                        try {
+                            val streams = repository.getLiveStreams(playlist).getOrDefault(emptyList())
+                            streams.find { it.stream_id == streamId }?.name ?: ""
+                        } catch (e: Exception) { "" }
+                    }
+                    "movie" -> {
+                        try {
+                            val streams = repository.getVodStreams(playlist).getOrDefault(emptyList())
+                            streams.find { it.stream_id == streamId }?.name ?: ""
+                        } catch (e: Exception) { "" }
+                    }
+                    else -> ""
+                }
+
+                val progress = try { repository.getProgress(id) } catch (e: Exception) { null }
+
+                _state.value = _state.value.copy(
+                    streamUrl = url,
+                    streamTitle = name,
+                    savedPosition = progress?.positionMs ?: 0L,
+                    isLoading = false
+                )
+            } catch (e: Exception) {
+                _state.value = _state.value.copy(
+                    isLoading = false,
+                    error = e.message ?: "خطأ غير معروف"
+                )
             }
-
-            val name = when (type) {
-                "live" -> {
-                    val streams = repository.getLiveStreams(playlist).getOrDefault(emptyList())
-                    streams.find { it.stream_id == id.toIntOrNull() }?.name ?: ""
-                }
-                "movie" -> {
-                    val streams = repository.getVodStreams(playlist).getOrDefault(emptyList())
-                    streams.find { it.stream_id == id.toIntOrNull() }?.name ?: ""
-                }
-                else -> ""
-            }
-
-            val progress = repository.getProgress(id)
-
-            _state.value = _state.value.copy(
-                streamUrl = url,
-                streamTitle = name,
-                savedPosition = progress?.positionMs ?: 0L,
-                isLoading = false
-            )
         }
     }
 
     fun saveProgress(id: String, name: String, icon: String, url: String, type: String, position: Long, duration: Long) {
         if (position <= 0) return
         viewModelScope.launch {
-            repository.saveProgress(
-                WatchProgress(
-                    streamId = id,
-                    streamName = name,
-                    streamIcon = icon,
-                    streamUrl = url,
-                    streamType = type,
-                    positionMs = position,
-                    durationMs = duration
+            try {
+                repository.saveProgress(
+                    WatchProgress(
+                        streamId = id,
+                        streamName = name,
+                        streamIcon = icon,
+                        streamUrl = url,
+                        streamType = type,
+                        positionMs = position,
+                        durationMs = duration
+                    )
                 )
-            )
+            } catch (e: Exception) { }
         }
     }
 }
