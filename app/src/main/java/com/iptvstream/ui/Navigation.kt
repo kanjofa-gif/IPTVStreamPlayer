@@ -17,8 +17,9 @@ sealed class Screen(val route: String) {
     data object Account : Screen("account")
     data object Whats_New : Screen("whats_new")
     data object MobileApp : Screen("mobile_app")
-    data object Player : Screen("player/{type}/{id}") {
-        fun createRoute(type: String, id: String) = "player/$type/$id"
+    data object Player : Screen("player/{type}/{id}/{url}") {
+        fun createRoute(type: String, id: String, url: String) =
+            "player/$type/$id/${url.encodeForRoute()}"
     }
 }
 
