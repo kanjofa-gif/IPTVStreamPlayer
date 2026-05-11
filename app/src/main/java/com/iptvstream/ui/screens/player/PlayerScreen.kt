@@ -6,14 +6,12 @@ import androidx.compose.animation.*
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -22,7 +20,6 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.media3.common.MediaItem
-import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import kotlinx.coroutines.delay
@@ -40,18 +37,9 @@ fun PlayerScreen(
     val context = LocalContext.current
     val state by viewModel.state.collectAsState()
     var isControlsVisible by remember { mutableStateOf(true) }
-    var streamUrl by remember { mutableStateOf(url) }
-    var streamTitle by remember { mutableStateOf(title) }
 
     LaunchedEffect(id) {
         viewModel.loadStream(type, id)
-    }
-
-    LaunchedEffect(state.streamUrl) {
-        if (state.streamUrl.isNotBlank()) {
-            streamUrl = state.streamUrl
-            streamTitle = state.streamTitle
-        }
     }
 
     val exoPlayer = remember {
@@ -60,9 +48,9 @@ fun PlayerScreen(
         }
     }
 
-    LaunchedEffect(streamUrl) {
-        if (streamUrl.isNotBlank()) {
-            exoPlayer.setMediaItem(MediaItem.fromUri(streamUrl))
+    LaunchedEffect(state.streamUrl) {
+        if (state.streamUrl.isNotBlank()) {
+            exoPlayer.setMediaItem(MediaItem.fromUri(state.streamUrl))
             exoPlayer.prepare()
         }
     }
@@ -80,9 +68,9 @@ fun PlayerScreen(
             if (exoPlayer.isPlaying) {
                 viewModel.saveProgress(
                     id = id,
-                    name = streamTitle,
-                    icon = icon,
-                    url = streamUrl,
+                    name = state.streamTitle,
+                    icon = state.streamIcon,
+                    url = state.streamUrl,
                     type = type,
                     position = exoPlayer.currentPosition,
                     duration = exoPlayer.duration.takeIf { it > 0 } ?: 0
@@ -95,9 +83,9 @@ fun PlayerScreen(
         onDispose {
             viewModel.saveProgress(
                 id = id,
-                name = streamTitle,
-                icon = icon,
-                url = streamUrl,
+                name = state.streamTitle,
+                icon = state.streamIcon,
+                url = state.streamUrl,
                 type = type,
                 position = exoPlayer.currentPosition,
                 duration = exoPlayer.duration.takeIf { it > 0 } ?: 0
@@ -132,7 +120,6 @@ fun PlayerScreen(
             exit = fadeOut()
         ) {
             Box(modifier = Modifier.fillMaxSize()) {
-                // Back button
                 IconButton(
                     onClick = onBack,
                     modifier = Modifier.align(Alignment.TopStart).padding(16.dp)
@@ -140,16 +127,14 @@ fun PlayerScreen(
                     Icon(Icons.Default.ArrowBack, null, tint = Color.White, modifier = Modifier.size(28.dp))
                 }
 
-                // Title
                 Text(
-                    text = streamTitle,
+                    text = state.streamTitle,
                     color = Color.White,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     modifier = Modifier.align(Alignment.TopCenter).padding(top = 20.dp)
                 )
 
-                // Bottom controls
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -218,7 +203,7 @@ fun PlayerScreen(
             }
         }
 
-        if (streamUrl.isBlank() && state.isLoading) {
+        if (state.isLoading) {
             CircularProgressIndicator(
                 color = Color.White,
                 modifier = Modifier.align(Alignment.Center)
