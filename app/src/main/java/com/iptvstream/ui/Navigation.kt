@@ -17,11 +17,10 @@ sealed class Screen(val route: String) {
     data object Account : Screen("account")
     data object Whats_New : Screen("whats_new")
     data object MobileApp : Screen("mobile_app")
-    data object Player : Screen("player/{type}/{id}/{url}/{title}/{icon}") {
-        fun createRoute(type: String, id: String, url: String, title: String, icon: String) =
-            "player/$type/$id/${url.encodeForRoute()}/${title.encodeForRoute()}/${icon.encodeForRoute()}"
+    data object Player : Screen("player/{type}/{id}") {
+        fun createRoute(type: String, id: String) = "player/$type/$id"
     }
 }
 
-fun String.encodeForRoute() = java.net.URLEncoder.encode(this, "UTF-8") ?: this
 fun String.decodeFromRoute() = java.net.URLDecoder.decode(this, "UTF-8") ?: this
+fun String.encodeForRoute() = java.net.URLEncoder.encode(this, "UTF-8") ?: this
