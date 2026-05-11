@@ -14,8 +14,7 @@ data class PlayerState(
     val streamUrl: String = "",
     val streamTitle: String = "",
     val streamIcon: String = "",
-    val savedPosition: Long = 0L,
-    val isLoading: Boolean = true,
+    val isLoading: Boolean = false,
     val error: String? = null
 )
 
@@ -27,39 +26,13 @@ class PlayerViewModel @Inject constructor(
     private val _state = MutableStateFlow(PlayerState())
     val state = _state.asStateFlow()
 
-    fun loadStream(type: String, id: String) {
-        viewModelScope.launch {
-            try {
-                _state.value = _state.value.copy(isLoading = true, error = null)
-                val playlist = repository.getSelectedPlaylist() ?: run {
-                    _state.value = _state.value.copy(isLoading = false, error = "لا توجد قائمة")
-                    return@launch
-                }
-
-                val streamId = id.toIntOrNull() ?: 0
-                val base = playlist.url.trimEnd('/')
-                val user = playlist.username
-                val pass = playlist.password
-
-                val url = when (type) {
-                    "live" -> "$base/live/$user/$pass/$streamId.ts"
-                    "movie" -> "$base/movie/$user/$pass/$streamId.mkv"
-                    "series" -> "$base/series/$user/$pass/$streamId.mkv"
-                    else -> ""
-                }
-
-                _state.value = _state.value.copy(
-                    streamUrl = url,
-                    streamTitle = "",
-                    isLoading = false
-                )
-            } catch (e: Exception) {
-                _state.value = _state.value.copy(
-                    isLoading = false,
-                    error = e.message
-                )
-            }
-        }
+    fun setUrl(url: String, title: String = "", icon: String = "") {
+        _state.value = _state.value.copy(
+            streamUrl = url,
+            streamTitle = title,
+            streamIcon = icon,
+            isLoading = false
+        )
     }
 
     fun saveProgress(id: String, name: String, icon: String, url: String, type: String, position: Long, duration: Long) {
