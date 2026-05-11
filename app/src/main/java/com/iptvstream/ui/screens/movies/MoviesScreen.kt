@@ -60,7 +60,7 @@ fun MoviesScreen(
                                 MovieCard(
                                     name = movie.name,
                                     icon = movie.stream_icon,
-                                    rating = movie.rating_5based.let { if (it > 0) String.format("%.1f", it) else "" },
+                                    rating = if (movie.rating_5based > 0) String.format("%.1f", movie.rating_5based) else "",
                                     onClick = { viewModel.selectMovie(movie) }
                                 )
                             }
@@ -96,7 +96,8 @@ fun MoviesScreen(
                 watchProgress = state.watchProgress,
                 isFavorite = state.isFavorite,
                 onDismiss = viewModel::dismissDetail,
-                onPlay = { url ->
+                onPlay = {
+                    val url = state.movieUrl(movie.stream_id, movie.container_extension)
                     onPlayMovie(url, movie.stream_id.toString(), movie.name, movie.stream_icon)
                     viewModel.dismissDetail()
                 },
@@ -118,7 +119,7 @@ fun MovieDetailDialog(
     watchProgress: Long?,
     isFavorite: Boolean,
     onDismiss: () -> Unit,
-    onPlay: (String) -> Unit,
+    onPlay: () -> Unit,
     onPlayNew: () -> Unit,
     onToggleFavorite: () -> Unit,
     onRemoveProgress: () -> Unit
@@ -180,38 +181,18 @@ fun MovieDetailDialog(
                             Text("المقطع الدعائي", fontSize = 13.sp)
                         }
                     }
-
-                    OutlinedButton(onClick = {}) {
-                        Icon(Icons.Default.Close, null, modifier = Modifier.size(16.dp))
-                        Spacer(Modifier.width(4.dp))
-                        Text("لم تتم المشاهدة", fontSize = 13.sp)
-                    }
-                }
-
-                if (watchProgress != null && watchProgress > 0) {
-                    Spacer(Modifier.height(4.dp))
-                    Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text(formatDuration(watchProgress), color = TextSecondary, fontSize = 13.sp)
-                        LinearProgressIndicator(
-                            progress = { 0.5f },
-                            modifier = Modifier.weight(1f).height(3.dp).clip(RoundedCornerShape(2.dp)),
-                            color = Primary,
-                            trackColor = Color(0xFF333333)
-                        )
-                        Text("2:15", color = TextSecondary, fontSize = 13.sp)
-                    }
                 }
 
                 Spacer(Modifier.height(8.dp))
 
                 Button(
-                    onClick = { onPlay("") },
+                    onClick = onPlay,
                     colors = ButtonDefaults.buttonColors(containerColor = Primary),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Icon(Icons.Default.PlayArrow, null)
                     Spacer(Modifier.width(8.dp))
-                    Text("متابعة", fontSize = 15.sp)
+                    Text("تشغيل", fontSize = 15.sp)
                 }
 
                 OutlinedButton(
@@ -242,12 +223,4 @@ fun MovieDetailDialog(
             }
         }
     }
-}
-
-private fun formatDuration(ms: Long): String {
-    val totalSec = ms / 1000
-    val h = totalSec / 3600
-    val m = (totalSec % 3600) / 60
-    val s = totalSec % 60
-    return if (h > 0) "%d:%02d:%02d".format(h, m, s) else "%d:%02d".format(m, s)
 }
