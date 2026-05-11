@@ -7,6 +7,7 @@ import androidx.compose.runtime.*
 import androidx.navigation.NavType
 import androidx.navigation.compose.*
 import androidx.navigation.navArgument
+import com.iptvstream.data.repository.IPTVRepository
 import com.iptvstream.ui.components.NavTab
 import com.iptvstream.ui.screens.home.HomeScreen
 import com.iptvstream.ui.screens.live.LiveScreen
@@ -18,26 +19,38 @@ import com.iptvstream.ui.screens.settings.SettingsScreen
 import com.iptvstream.ui.screens.setup.SetupScreen
 import com.iptvstream.ui.theme.IPTVTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var repository: IPTVRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             IPTVTheme {
-                IPTVNavHost()
+                IPTVNavHost(repository)
             }
         }
     }
 }
 
 @Composable
-fun IPTVNavHost() {
+fun IPTVNavHost(repository: IPTVRepository) {
     val navController = rememberNavController()
     var currentTab by remember { mutableStateOf(NavTab.HOME) }
-    var isDrawerOpen by remember { mutableStateOf(false) }
+    var startDestination by remember { mutableStateOf<String?>(null) }
 
-    NavHost(navController = navController, startDestination = Screen.Setup.route) {
+    LaunchedEffect(Unit) {
+        val playlist = repository.getSelectedPlaylist()
+        startDestination = if (playlist != null) Screen.Home.route else Screen.Setup.route
+    }
+
+    if (startDestination == null) return
+
+    NavHost(navController = navController, startDestination = startDestination!!) {
 
         composable(Screen.Setup.route) {
             SetupScreen(
@@ -77,7 +90,7 @@ fun IPTVNavHost() {
                 onPlayStream = { type, id, url, title, icon ->
                     navController.navigate(Screen.Player.createRoute(type, id, url, title, icon))
                 },
-                onSettingsClick = { isDrawerOpen = !isDrawerOpen }
+                onSettingsClick = {}
             )
         }
 
