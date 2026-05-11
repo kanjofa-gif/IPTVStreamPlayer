@@ -1,7 +1,9 @@
 package com.iptvstream.ui.screens.home
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
@@ -22,16 +24,13 @@ fun HomeScreen(
 
     Box(modifier = Modifier.fillMaxSize().background(com.iptvstream.ui.theme.Background)) {
         Column(modifier = Modifier.fillMaxSize()) {
-
             IPTVTopBar(
                 currentTab = currentTab,
                 onTabSelected = onTabSelected,
                 onSettingsClick = onSettingsClick,
                 onContinueWatchingClick = { onNavigate("player") }
             )
-
             HorizontalDivider(color = com.iptvstream.ui.theme.Divider, thickness = 0.5.dp)
-
             Column(
                 modifier = Modifier
                     .fillMaxSize()
@@ -42,4 +41,70 @@ fun HomeScreen(
                 if (state.recentLive.isNotEmpty()) {
                     SectionRow(title = "البث المباشر") {
                         HorizontalScrollRow(
-                            item
+                            items = state.recentLive,
+                            key = { it.streamId }
+                        ) { item ->
+                            ChannelCard(
+                                name = item.streamName,
+                                icon = item.streamIcon,
+                                onClick = {
+                                    onPlayStream("live", item.streamId, item.streamUrl, item.streamName, item.streamIcon)
+                                }
+                            )
+                        }
+                    }
+                }
+                if (state.latestMovies.isNotEmpty()) {
+                    SectionRow(title = "الأفلام") {
+                        HorizontalScrollRow(
+                            items = state.latestMovies,
+                            key = { it.stream_id }
+                        ) { movie ->
+                            MovieCard(
+                                name = movie.name,
+                                icon = movie.stream_icon,
+                                rating = if (movie.rating_5based > 0) String.format("%.1f", movie.rating_5based) else "",
+                                year = "",
+                                onClick = { onNavigate("movies/${movie.stream_id}") }
+                            )
+                        }
+                    }
+                }
+                if (state.latestSeries.isNotEmpty()) {
+                    SectionRow(title = "المسلسلات") {
+                        HorizontalScrollRow(
+                            items = state.latestSeries,
+                            key = { it.series_id }
+                        ) { series ->
+                            MovieCard(
+                                name = series.name,
+                                icon = series.cover,
+                                rating = if (series.rating_5based > 0) String.format("%.1f", series.rating_5based) else "",
+                                onClick = { onNavigate("series/${series.series_id}") }
+                            )
+                        }
+                    }
+                }
+                Spacer(Modifier.height(16.dp))
+            }
+        }
+        if (state.isDrawerOpen) {
+            SettingsDrawer(
+                isVisible = true,
+                userInfo = state.userInfo,
+                expDate = state.expDate,
+                maxConnections = state.maxConnections,
+                isTrial = state.isTrial,
+                onDismiss = viewModel::closeDrawer,
+                onAccount = { viewModel.closeDrawer(); onNavigate("account") },
+                onRefresh = viewModel::refreshData,
+                onManagePlaylists = { viewModel.closeDrawer(); onNavigate("manage_playlists") },
+                onManageCategories = { viewModel.closeDrawer(); onNavigate("manage_categories/live") },
+                onSettings = { viewModel.closeDrawer(); onNavigate("settings") },
+                onWhatsNew = { viewModel.closeDrawer(); onNavigate("whats_new") },
+                onMobileApp = { viewModel.closeDrawer(); onNavigate("mobile_app") },
+                onNotes = { viewModel.closeDrawer() }
+            )
+        }
+    }
+}
