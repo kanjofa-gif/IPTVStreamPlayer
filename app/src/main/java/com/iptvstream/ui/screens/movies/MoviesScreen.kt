@@ -3,6 +3,7 @@ package com.iptvstream.ui.screens.movies
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.*
+import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -41,10 +42,9 @@ fun MoviesScreen(
                 onSettingsClick = onSettingsClick,
                 onContinueWatchingClick = {}
             )
-            Divider(color = Divider, thickness = 0.5.dp)
+            HorizontalDivider(color = Divider, thickness = 0.5.dp)
 
             Row(modifier = Modifier.fillMaxSize()) {
-                // Movies grid
                 Box(modifier = Modifier.weight(1f).fillMaxHeight()) {
                     if (state.isLoading) {
                         LoadingState()
@@ -68,7 +68,6 @@ fun MoviesScreen(
                     }
                 }
 
-                // Categories list
                 LazyColumn(
                     modifier = Modifier
                         .width(260.dp)
@@ -91,7 +90,6 @@ fun MoviesScreen(
             }
         }
 
-        // Movie Detail Dialog
         state.selectedMovie?.let { movie ->
             MovieDetailDialog(
                 movie = movie,
@@ -141,7 +139,6 @@ fun MovieDetailDialog(
                 .padding(24.dp),
             horizontalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            // Poster
             AsyncImage(
                 model = movie.stream_icon,
                 contentDescription = movie.name,
@@ -153,7 +150,6 @@ fun MovieDetailDialog(
                     .background(CardBackground)
             )
 
-            // Info
             Column(
                 modifier = Modifier.weight(1f),
                 horizontalAlignment = Alignment.End,
@@ -170,9 +166,7 @@ fun MovieDetailDialog(
                     )
                 }
 
-                // Action buttons row
                 Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    // Favorite
                     OutlinedButton(
                         onClick = onToggleFavorite,
                         colors = ButtonDefaults.outlinedButtonColors(contentColor = if (isFavorite) AccentOrange else TextPrimary),
@@ -181,14 +175,12 @@ fun MovieDetailDialog(
                         Icon(if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder, null, modifier = Modifier.size(18.dp))
                     }
 
-                    // Trailer
                     if (!movie.youtube_trailer.isNullOrBlank()) {
                         OutlinedButton(onClick = {}) {
                             Text("المقطع الدعائي", fontSize = 13.sp)
                         }
                     }
 
-                    // Watch status
                     OutlinedButton(onClick = {}) {
                         Icon(Icons.Default.Close, null, modifier = Modifier.size(16.dp))
                         Spacer(Modifier.width(4.dp))
@@ -196,7 +188,6 @@ fun MovieDetailDialog(
                     }
                 }
 
-                // Progress bar if watching
                 if (watchProgress != null && watchProgress > 0) {
                     Spacer(Modifier.height(4.dp))
                     Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -213,7 +204,6 @@ fun MovieDetailDialog(
 
                 Spacer(Modifier.height(8.dp))
 
-                // Play buttons
                 Button(
                     onClick = { onPlay("") },
                     colors = ButtonDefaults.buttonColors(containerColor = Primary),
@@ -246,7 +236,6 @@ fun MovieDetailDialog(
                     }
                 }
 
-                // Description
                 if (!movie.plot.isNullOrBlank()) {
                     Text(movie.plot!!, color = TextSecondary, fontSize = 13.sp, textAlign = TextAlign.End, maxLines = 4)
                 }
