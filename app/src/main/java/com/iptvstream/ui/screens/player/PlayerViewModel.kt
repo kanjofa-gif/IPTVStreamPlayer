@@ -15,7 +15,6 @@ data class PlayerState(
     val streamTitle: String = "",
     val streamIcon: String = "",
     val savedPosition: Long = 0L,
-    val duration: Long = 0L,
     val isLoading: Boolean = true,
     val error: String? = null
 )
@@ -33,47 +32,31 @@ class PlayerViewModel @Inject constructor(
             try {
                 _state.value = _state.value.copy(isLoading = true, error = null)
                 val playlist = repository.getSelectedPlaylist() ?: run {
-                    _state.value = _state.value.copy(isLoading = false, error = "لا توجد قائمة تشغيل")
+                    _state.value = _state.value.copy(isLoading = false, error = "لا توجد قائمة")
                     return@launch
                 }
 
                 val streamId = id.toIntOrNull() ?: 0
+                val base = playlist.url.trimEnd('/')
+                val user = playlist.username
+                val pass = playlist.password
 
                 val url = when (type) {
-                    "live" -> repository.buildStreamUrl(playlist, streamId)
-                    "movie" -> repository.buildVodUrl(playlist, streamId, "mkv")
-                    "series" -> repository.buildSeriesUrl(playlist, streamId, "mkv")
+                    "live" -> "$base/live/$user/$pass/$streamId.ts"
+                    "movie" -> "$base/movie/$user/$pass/$streamId.mkv"
+                    "series" -> "$base/series/$user/$pass/$streamId.mkv"
                     else -> ""
                 }
-
-                val name = when (type) {
-                    "live" -> {
-                        try {
-                            val streams = repository.getLiveStreams(playlist).getOrDefault(emptyList())
-                            streams.find { it.stream_id == streamId }?.name ?: ""
-                        } catch (e: Exception) { "" }
-                    }
-                    "movie" -> {
-                        try {
-                            val streams = repository.getVodStreams(playlist).getOrDefault(emptyList())
-                            streams.find { it.stream_id == streamId }?.name ?: ""
-                        } catch (e: Exception) { "" }
-                    }
-                    else -> ""
-                }
-
-                val progress = try { repository.getProgress(id) } catch (e: Exception) { null }
 
                 _state.value = _state.value.copy(
                     streamUrl = url,
-                    streamTitle = name,
-                    savedPosition = progress?.positionMs ?: 0L,
+                    streamTitle = "",
                     isLoading = false
                 )
             } catch (e: Exception) {
                 _state.value = _state.value.copy(
                     isLoading = false,
-                    error = e.message ?: "خطأ غير معروف"
+                    error = e.message
                 )
             }
         }
