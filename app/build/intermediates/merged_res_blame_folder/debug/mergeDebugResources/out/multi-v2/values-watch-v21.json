@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.iptvstream.app-mergeDebugResources-70:/values-watch-v21/values-watch-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\kanjo\\.gradle\\caches\\8.9\\transforms\\f8f46d69d2e2fe2aa7ad3be0b12c8969\\transformed\\appcompat-1.7.0\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,271,499",
+                        "endLines": "5,9,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "266,494,724"
+                    }
+                }
+            ]
+        }
+    ]
+}

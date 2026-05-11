@@ -1,0 +1,4 @@
+com.iptvstream.test.app-androidTest-0 C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\build\generated\res\resValues\androidTest\debug
+com.iptvstream.test.app-mergeDebugAndroidTestResources-1 C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.iptvstream.test.app-mergeDebugAndroidTestResources-2 C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.iptvstream.test.app-debugAndroidTest-3 C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

@@ -1,0 +1,504 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:2:1-34:12
+MERGED from [io.coil-kt:coil-compose:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\29b4a293f38b9424a371cc5155a4f213\transformed\coil-compose-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-compose-base:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\f84c2ada46a7513991078ca1dfb27f65\transformed\coil-compose-base-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\0e338b877779188d9955885385f99722\transformed\coil-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [io.coil-kt:coil-base:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\c6a00c5b10844ae01a7a63d08852f071\transformed\coil-base-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\ef0a5d4113ae01050ba19c1e903ce8a9\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\f8f46d69d2e2fe2aa7ad3be0b12c8969\transformed\appcompat-1.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.media3:media3-ui:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\5b96e5937f46d15a8816cbe552498636\transformed\media3-ui-1.4.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-extractor:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\852b9850d289994a070fbe87034e6dfb\transformed\media3-extractor-1.4.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-container:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\83bd7e089420fa7c78b1ffb0b6d0c686\transformed\media3-container-1.4.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-datasource:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\0efe9738346cbc8ac649408eb9fdc19a\transformed\media3-datasource-1.4.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-decoder:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a150c96230d1825e571e0cd8d80082e7\transformed\media3-decoder-1.4.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-database:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\d6a4b717e67fa4b12b638f6cc05e8603\transformed\media3-database-1.4.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-common:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\d14c0033075b8822d3211606ee8aeb25\transformed\media3-common-1.4.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.media3:media3-exoplayer-hls:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\49ea137be912837beef52dc28f43e2c1\transformed\media3-exoplayer-hls-1.4.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-exoplayer-dash:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\949aa7c31bfc3d8ea6f141081ea84188\transformed\media3-exoplayer-dash-1.4.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.media3:media3-exoplayer:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\ab137134f65d1f593e0a4741c450a714\transformed\media3-exoplayer-1.4.1\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\2538ffd69fbb6000ed63387002823aaa\transformed\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\5a4e9c0da9e3965c47274dcaf6f3705b\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material3:material3-android:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\69bbbc46d445072d4384ec263a9fae59\transformed\material3-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.hilt:hilt-navigation-compose:1.2.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9690ae909eff2f96ab060ad5bba94a37\transformed\hilt-navigation-compose-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.hilt:hilt-navigation:1.2.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\3d8f1a0c57e9d58b4faca9b8c89e3cbb\transformed\hilt-navigation-1.2.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-common:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\767a94ae394021cc6750e9150b3ddd50\transformed\navigation-common-2.8.4\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\aae97dab78c0fcf8fb30169c09df1aec\transformed\navigation-common-ktx-2.8.4\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-runtime:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\974cc820f6710ed42481c35a7db5aa3d\transformed\navigation-runtime-2.8.4\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\2b0b374208682f83c96888e1274a9ef0\transformed\navigation-runtime-ktx-2.8.4\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.navigation:navigation-compose:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\310d76671b16dd824ff41a505cdab90b\transformed\navigation-compose-2.8.4\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.dagger:hilt-android:2.51.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\652ef8ace68c3be19105827ec7ffde94\transformed\hilt-android-2.51.1\AndroidManifest.xml:16:1-19:12
+MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\881dfa39a600d47bc5699d2efd332467\transformed\fragment-1.5.4\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity-ktx:1.9.3] C:\Users\kanjo\.gradle\caches\8.9\transforms\9b2f38d19731422859a5ad7ba4c8caf9\transformed\activity-ktx-1.9.3\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.9.3] C:\Users\kanjo\.gradle\caches\8.9\transforms\2a1794b656b53f149f57c320cc777564\transformed\activity-1.9.3\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.material:material-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\213796ef4404290272ea7e4f4b9b557d\transformed\material-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\c1848b4d03ac17eb4fbc74df2b307817\transformed\foundation-layout-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-core-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\9a775feb5a346d66bb252e3355c5e680\transformed\animation-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-ripple-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2513d0146f87fd938640b7659026238\transformed\material-ripple-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.animation:animation-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\01f633049adfab2dafd0fb917a568628\transformed\animation-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\fd4224bc45c220f74b9022b38c13736d\transformed\ui-tooling-data-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\aecaa4c797bb6f7dbd97459f75be2542\transformed\ui-unit-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\36f185d2d46c94f4890603e666182690\transformed\ui-graphics-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\7c8938e52d1ffc5dfbb4f08945a73764\transformed\ui-geometry-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-util-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\be3eb431374b5c16e7fd20b656d0469a\transformed\ui-util-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-text-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\4550e3bc07ba7cf474821762ac09258a\transformed\ui-text-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\69d47426f595a287657c46cfc2e3c329\transformed\ui-tooling-preview-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\67208207a7999021372da74a8f3cebac\transformed\ui-tooling-release\AndroidManifest.xml:17:1-28:12
+MERGED from [androidx.activity:activity-compose:1.9.3] C:\Users\kanjo\.gradle\caches\8.9\transforms\26dbd95a1e923ec5cf5e60b2d06626fe\transformed\activity-compose-1.9.3\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\07375d934cf9e579adf88b2dadbfd051\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\fb20815afbcc04518e24d84ecedbcb15\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\d95d49c695b5618117aaf22547a8c566\transformed\savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\0bf2a2c7d2329a9bf4c441147cca815d\transformed\lifecycle-runtime-compose-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\cf5456cf8c7a39e990e90a38294b2cee\transformed\lifecycle-livedata-core-ktx-2.8.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\60690af10788eb4089e8369796228dfe\transformed\lifecycle-viewmodel-2.8.7\AndroidManifest.xml:2:1-5:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\0b8a90cc05cab3d4756406aa6f04c782\transformed\lifecycle-viewmodel-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\e94c8ff5d33f148258cc64be0a55e35f\transformed\lifecycle-runtime-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\d6dde85d68b890f8f184e8a2bdc8b964\transformed\lifecycle-livedata-2.8.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\dbbaf9c1a7e86c6916a50a31a0d9fff4\transformed\lifecycle-viewmodel-ktx-2.8.7\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\00daa5f885e4658ffc84ab64d00df807\transformed\lifecycle-viewmodel-savedstate-2.8.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\b4abc2c71b7233ec6c64cf88e12d8037\transformed\lifecycle-livedata-core-2.8.7\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\cb61ac0907ae02a7dc68908c46f1ee06\transformed\lifecycle-runtime-ktx-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\8884d3e8aa970dcd7d345653b0f5a739\transformed\lifecycle-viewmodel-compose-release\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\6f9271bf7774f537b0a3b44049b3f24c\transformed\accompanist-drawablepainter-0.32.0\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\aaebbe2c849e472fce7900fefc87b5ea\transformed\material-icons-extended-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\58d43837b7dd17fb76f9bf4208c3a8a6\transformed\material-icons-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.ui:ui-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\ee095365ff17382a8801236dbdf11afe\transformed\ui-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.foundation:foundation-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\381718e72bf9618542f6f00b71158b6b\transformed\foundation-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9df4cc460525c729472aefe6d62c5fa5\transformed\emoji2-1.3.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.media:media:1.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\2ec2c79a6370712b4b4f03932205be83\transformed\media-1.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.recyclerview:recyclerview:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\14c7a9e84c02aa5664137a5b4c735151\transformed\recyclerview-1.3.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\06149e238817e5da10dced75388bbf46\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\7aa0cb32b6b02ebeba16ba7d1e4aeab6\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\a3621ec90f92eeecdf6075fbbdc05d63\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\131c877360af6b27c46b5a51256420b0\transformed\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\489112943730fb65074e4515da74e040\transformed\autofill-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\9a15306e98574929f1ecc20f5dd6140b\transformed\graphics-path-1.0.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\5e43ffff08d276296926ad66870f0ea6\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:17:1-23:12
+MERGED from [androidx.core:core-ktx:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\8e750f9cb4df20f8e3019d1fb17aa2a4\transformed\core-ktx-1.13.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\6a2cd976e8e21f5d7bd20f6a6f2445f7\transformed\room-runtime-2.6.1\AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.room:room-ktx:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\5dab15eb27610410688875453377f420\transformed\room-ktx-2.6.1\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\c8f16fb0efced40bb28059a4efef7cd4\transformed\datastore-core-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.datastore:datastore-android:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\b1248f880ec5affcae6bbb51bfcd8c9a\transformed\datastore-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\5c6bcd449fa06c92a338b3769dc988f6\transformed\datastore-preferences-release\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\c62ed09d60ef0222e789adb19ffa1a71\transformed\runtime-saveable-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.compose.runtime:runtime-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\0ab59daf0a20f07af992f2a07fc9725a\transformed\runtime-release\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\be26da182ed7afb6299144e7cc1f5d49\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\dbcd469ffedddad447acc5b8a1e9446e\transformed\sqlite-2.4.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\eed047342f08d939effd14ab087fa357\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\27498cc87f701014f84ef9282ea25cc6\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\8f794804fefcd61bdb3ca5d7b76fe3e6\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:17:1-55:12
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\84893c91d9c655f687fc3f3856fb9ff2\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\d052d1b460a346d13ff262d0360f4e50\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\763fcfe200666a245e5c8549437a6fa8\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\b4925b0f15623bb94773fcb8965bceea\transformed\tracing-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\fb21ca4775d9b7ae49a86fa70142006b\transformed\exifinterface-1.3.7\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.dagger:dagger-lint-aar:2.51.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\364fed666015121813d205860801d80c\transformed\dagger-lint-aar-2.51.1\AndroidManifest.xml:16:1-19:12
+	package
+		INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:4:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:5:5-79
+MERGED from [androidx.media3:media3-common:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\d14c0033075b8822d3211606ee8aeb25\transformed\media3-common-1.4.1\AndroidManifest.xml:22:5-79
+MERGED from [androidx.media3:media3-common:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\d14c0033075b8822d3211606ee8aeb25\transformed\media3-common-1.4.1\AndroidManifest.xml:22:5-79
+MERGED from [androidx.media3:media3-exoplayer:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\ab137134f65d1f593e0a4741c450a714\transformed\media3-exoplayer-1.4.1\AndroidManifest.xml:22:5-79
+MERGED from [androidx.media3:media3-exoplayer:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\ab137134f65d1f593e0a4741c450a714\transformed\media3-exoplayer-1.4.1\AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:5:22-76
+uses-feature#android.software.leanback
+ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:7:5-87
+	android:required
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:7:60-84
+	android:name
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:7:19-59
+uses-feature#android.hardware.touchscreen
+ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:8:5-90
+	android:required
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:8:63-87
+	android:name
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:8:19-62
+application
+ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:10:5-33:19
+INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:10:5-33:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\67208207a7999021372da74a8f3cebac\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\67208207a7999021372da74a8f3cebac\transformed\ui-tooling-release\AndroidManifest.xml:22:5-26:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9df4cc460525c729472aefe6d62c5fa5\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9df4cc460525c729472aefe6d62c5fa5\transformed\emoji2-1.3.0\AndroidManifest.xml:23:5-33:19
+MERGED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:28:5-89
+MERGED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:28:5-89
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\6a2cd976e8e21f5d7bd20f6a6f2445f7\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\6a2cd976e8e21f5d7bd20f6a6f2445f7\transformed\room-runtime-2.6.1\AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\27498cc87f701014f84ef9282ea25cc6\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\27498cc87f701014f84ef9282ea25cc6\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:23:5-53:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\763fcfe200666a245e5c8549437a6fa8\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\763fcfe200666a245e5c8549437a6fa8\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
+	android:extractNativeLibs
+		INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+	android:supportsRtl
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:15:9-35
+	android:label
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:14:9-41
+	android:icon
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:13:9-45
+	android:allowBackup
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:12:9-35
+	android:theme
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:16:9-48
+	android:usesCleartextTraffic
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:17:9-44
+	android:name
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:11:9-32
+activity#com.iptvstream.ui.MainActivity
+ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:19:9-32:20
+	android:label
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:23:13-45
+	android:launchMode
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:24:13-43
+	android:exported
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:22:13-36
+	android:supportsPictureInPicture
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:25:13-52
+	android:configChanges
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:21:13-126
+	android:theme
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:26:13-52
+	android:name
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:20:13-44
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER+category:name:android.intent.category.LEANBACK_LAUNCHER
+ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:27:13-31:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:28:17-69
+	android:name
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:28:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:29:17-77
+	android:name
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:29:27-74
+category#android.intent.category.LEANBACK_LAUNCHER
+ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:30:17-86
+	android:name
+		ADDED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml:30:27-83
+uses-sdk
+INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml
+MERGED from [io.coil-kt:coil-compose:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\29b4a293f38b9424a371cc5155a4f213\transformed\coil-compose-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\29b4a293f38b9424a371cc5155a4f213\transformed\coil-compose-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\f84c2ada46a7513991078ca1dfb27f65\transformed\coil-compose-base-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-compose-base:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\f84c2ada46a7513991078ca1dfb27f65\transformed\coil-compose-base-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\0e338b877779188d9955885385f99722\transformed\coil-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\0e338b877779188d9955885385f99722\transformed\coil-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\c6a00c5b10844ae01a7a63d08852f071\transformed\coil-base-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [io.coil-kt:coil-base:2.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\c6a00c5b10844ae01a7a63d08852f071\transformed\coil-base-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\ef0a5d4113ae01050ba19c1e903ce8a9\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\ef0a5d4113ae01050ba19c1e903ce8a9\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\f8f46d69d2e2fe2aa7ad3be0b12c8969\transformed\appcompat-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.appcompat:appcompat:1.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\f8f46d69d2e2fe2aa7ad3be0b12c8969\transformed\appcompat-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.media3:media3-ui:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\5b96e5937f46d15a8816cbe552498636\transformed\media3-ui-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-ui:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\5b96e5937f46d15a8816cbe552498636\transformed\media3-ui-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-extractor:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\852b9850d289994a070fbe87034e6dfb\transformed\media3-extractor-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-extractor:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\852b9850d289994a070fbe87034e6dfb\transformed\media3-extractor-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-container:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\83bd7e089420fa7c78b1ffb0b6d0c686\transformed\media3-container-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-container:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\83bd7e089420fa7c78b1ffb0b6d0c686\transformed\media3-container-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-datasource:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\0efe9738346cbc8ac649408eb9fdc19a\transformed\media3-datasource-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-datasource:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\0efe9738346cbc8ac649408eb9fdc19a\transformed\media3-datasource-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-decoder:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a150c96230d1825e571e0cd8d80082e7\transformed\media3-decoder-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-decoder:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a150c96230d1825e571e0cd8d80082e7\transformed\media3-decoder-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-database:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\d6a4b717e67fa4b12b638f6cc05e8603\transformed\media3-database-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-database:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\d6a4b717e67fa4b12b638f6cc05e8603\transformed\media3-database-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-common:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\d14c0033075b8822d3211606ee8aeb25\transformed\media3-common-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-common:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\d14c0033075b8822d3211606ee8aeb25\transformed\media3-common-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-hls:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\49ea137be912837beef52dc28f43e2c1\transformed\media3-exoplayer-hls-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-hls:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\49ea137be912837beef52dc28f43e2c1\transformed\media3-exoplayer-hls-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-dash:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\949aa7c31bfc3d8ea6f141081ea84188\transformed\media3-exoplayer-dash-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer-dash:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\949aa7c31bfc3d8ea6f141081ea84188\transformed\media3-exoplayer-dash-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\ab137134f65d1f593e0a4741c450a714\transformed\media3-exoplayer-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.media3:media3-exoplayer:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\ab137134f65d1f593e0a4741c450a714\transformed\media3-exoplayer-1.4.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\2538ffd69fbb6000ed63387002823aaa\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\2538ffd69fbb6000ed63387002823aaa\transformed\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\5a4e9c0da9e3965c47274dcaf6f3705b\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\5a4e9c0da9e3965c47274dcaf6f3705b\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material3:material3-android:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\69bbbc46d445072d4384ec263a9fae59\transformed\material3-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material3:material3-android:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\69bbbc46d445072d4384ec263a9fae59\transformed\material3-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.hilt:hilt-navigation-compose:1.2.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9690ae909eff2f96ab060ad5bba94a37\transformed\hilt-navigation-compose-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.hilt:hilt-navigation-compose:1.2.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9690ae909eff2f96ab060ad5bba94a37\transformed\hilt-navigation-compose-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.hilt:hilt-navigation:1.2.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\3d8f1a0c57e9d58b4faca9b8c89e3cbb\transformed\hilt-navigation-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.hilt:hilt-navigation:1.2.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\3d8f1a0c57e9d58b4faca9b8c89e3cbb\transformed\hilt-navigation-1.2.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\767a94ae394021cc6750e9150b3ddd50\transformed\navigation-common-2.8.4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\767a94ae394021cc6750e9150b3ddd50\transformed\navigation-common-2.8.4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\aae97dab78c0fcf8fb30169c09df1aec\transformed\navigation-common-ktx-2.8.4\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-common-ktx:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\aae97dab78c0fcf8fb30169c09df1aec\transformed\navigation-common-ktx-2.8.4\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\974cc820f6710ed42481c35a7db5aa3d\transformed\navigation-runtime-2.8.4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\974cc820f6710ed42481c35a7db5aa3d\transformed\navigation-runtime-2.8.4\AndroidManifest.xml:20:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\2b0b374208682f83c96888e1274a9ef0\transformed\navigation-runtime-ktx-2.8.4\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-runtime-ktx:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\2b0b374208682f83c96888e1274a9ef0\transformed\navigation-runtime-ktx-2.8.4\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\310d76671b16dd824ff41a505cdab90b\transformed\navigation-compose-2.8.4\AndroidManifest.xml:5:5-44
+MERGED from [androidx.navigation:navigation-compose:2.8.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\310d76671b16dd824ff41a505cdab90b\transformed\navigation-compose-2.8.4\AndroidManifest.xml:5:5-44
+MERGED from [com.google.dagger:hilt-android:2.51.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\652ef8ace68c3be19105827ec7ffde94\transformed\hilt-android-2.51.1\AndroidManifest.xml:18:3-42
+MERGED from [com.google.dagger:hilt-android:2.51.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\652ef8ace68c3be19105827ec7ffde94\transformed\hilt-android-2.51.1\AndroidManifest.xml:18:3-42
+MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\881dfa39a600d47bc5699d2efd332467\transformed\fragment-1.5.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.5.4] C:\Users\kanjo\.gradle\caches\8.9\transforms\881dfa39a600d47bc5699d2efd332467\transformed\fragment-1.5.4\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity-ktx:1.9.3] C:\Users\kanjo\.gradle\caches\8.9\transforms\9b2f38d19731422859a5ad7ba4c8caf9\transformed\activity-ktx-1.9.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-ktx:1.9.3] C:\Users\kanjo\.gradle\caches\8.9\transforms\9b2f38d19731422859a5ad7ba4c8caf9\transformed\activity-ktx-1.9.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.9.3] C:\Users\kanjo\.gradle\caches\8.9\transforms\2a1794b656b53f149f57c320cc777564\transformed\activity-1.9.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.9.3] C:\Users\kanjo\.gradle\caches\8.9\transforms\2a1794b656b53f149f57c320cc777564\transformed\activity-1.9.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.material:material-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\213796ef4404290272ea7e4f4b9b557d\transformed\material-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\213796ef4404290272ea7e4f4b9b557d\transformed\material-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\c1848b4d03ac17eb4fbc74df2b307817\transformed\foundation-layout-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-layout-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\c1848b4d03ac17eb4fbc74df2b307817\transformed\foundation-layout-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\9a775feb5a346d66bb252e3355c5e680\transformed\animation-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-core-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\9a775feb5a346d66bb252e3355c5e680\transformed\animation-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2513d0146f87fd938640b7659026238\transformed\material-ripple-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-ripple-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2513d0146f87fd938640b7659026238\transformed\material-ripple-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\01f633049adfab2dafd0fb917a568628\transformed\animation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.animation:animation-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\01f633049adfab2dafd0fb917a568628\transformed\animation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\fd4224bc45c220f74b9022b38c13736d\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-data-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\fd4224bc45c220f74b9022b38c13736d\transformed\ui-tooling-data-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\aecaa4c797bb6f7dbd97459f75be2542\transformed\ui-unit-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-unit-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\aecaa4c797bb6f7dbd97459f75be2542\transformed\ui-unit-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\36f185d2d46c94f4890603e666182690\transformed\ui-graphics-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-graphics-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\36f185d2d46c94f4890603e666182690\transformed\ui-graphics-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\7c8938e52d1ffc5dfbb4f08945a73764\transformed\ui-geometry-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-geometry-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\7c8938e52d1ffc5dfbb4f08945a73764\transformed\ui-geometry-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\be3eb431374b5c16e7fd20b656d0469a\transformed\ui-util-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-util-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\be3eb431374b5c16e7fd20b656d0469a\transformed\ui-util-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\4550e3bc07ba7cf474821762ac09258a\transformed\ui-text-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-text-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\4550e3bc07ba7cf474821762ac09258a\transformed\ui-text-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\69d47426f595a287657c46cfc2e3c329\transformed\ui-tooling-preview-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-preview-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\69d47426f595a287657c46cfc2e3c329\transformed\ui-tooling-preview-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\67208207a7999021372da74a8f3cebac\transformed\ui-tooling-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\67208207a7999021372da74a8f3cebac\transformed\ui-tooling-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity-compose:1.9.3] C:\Users\kanjo\.gradle\caches\8.9\transforms\26dbd95a1e923ec5cf5e60b2d06626fe\transformed\activity-compose-1.9.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity-compose:1.9.3] C:\Users\kanjo\.gradle\caches\8.9\transforms\26dbd95a1e923ec5cf5e60b2d06626fe\transformed\activity-compose-1.9.3\AndroidManifest.xml:5:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\07375d934cf9e579adf88b2dadbfd051\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\07375d934cf9e579adf88b2dadbfd051\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\fb20815afbcc04518e24d84ecedbcb15\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate-ktx:1.2.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\fb20815afbcc04518e24d84ecedbcb15\transformed\savedstate-ktx-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\d95d49c695b5618117aaf22547a8c566\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\d95d49c695b5618117aaf22547a8c566\transformed\savedstate-1.2.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\0bf2a2c7d2329a9bf4c441147cca815d\transformed\lifecycle-runtime-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-compose-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\0bf2a2c7d2329a9bf4c441147cca815d\transformed\lifecycle-runtime-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\cf5456cf8c7a39e990e90a38294b2cee\transformed\lifecycle-livedata-core-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\cf5456cf8c7a39e990e90a38294b2cee\transformed\lifecycle-livedata-core-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\60690af10788eb4089e8369796228dfe\transformed\lifecycle-viewmodel-2.8.7\AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\60690af10788eb4089e8369796228dfe\transformed\lifecycle-viewmodel-2.8.7\AndroidManifest.xml:4:5-43
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\0b8a90cc05cab3d4756406aa6f04c782\transformed\lifecycle-viewmodel-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\0b8a90cc05cab3d4756406aa6f04c782\transformed\lifecycle-viewmodel-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\e94c8ff5d33f148258cc64be0a55e35f\transformed\lifecycle-runtime-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\e94c8ff5d33f148258cc64be0a55e35f\transformed\lifecycle-runtime-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\d6dde85d68b890f8f184e8a2bdc8b964\transformed\lifecycle-livedata-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\d6dde85d68b890f8f184e8a2bdc8b964\transformed\lifecycle-livedata-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\dbbaf9c1a7e86c6916a50a31a0d9fff4\transformed\lifecycle-viewmodel-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\dbbaf9c1a7e86c6916a50a31a0d9fff4\transformed\lifecycle-viewmodel-ktx-2.8.7\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\00daa5f885e4658ffc84ab64d00df807\transformed\lifecycle-viewmodel-savedstate-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\00daa5f885e4658ffc84ab64d00df807\transformed\lifecycle-viewmodel-savedstate-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:21:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\b4abc2c71b7233ec6c64cf88e12d8037\transformed\lifecycle-livedata-core-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\b4abc2c71b7233ec6c64cf88e12d8037\transformed\lifecycle-livedata-core-2.8.7\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\cb61ac0907ae02a7dc68908c46f1ee06\transformed\lifecycle-runtime-ktx-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime-ktx-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\cb61ac0907ae02a7dc68908c46f1ee06\transformed\lifecycle-runtime-ktx-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\8884d3e8aa970dcd7d345653b0f5a739\transformed\lifecycle-viewmodel-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-compose-android:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\8884d3e8aa970dcd7d345653b0f5a739\transformed\lifecycle-viewmodel-compose-release\AndroidManifest.xml:5:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\6f9271bf7774f537b0a3b44049b3f24c\transformed\accompanist-drawablepainter-0.32.0\AndroidManifest.xml:21:5-44
+MERGED from [com.google.accompanist:accompanist-drawablepainter:0.32.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\6f9271bf7774f537b0a3b44049b3f24c\transformed\accompanist-drawablepainter-0.32.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\aaebbe2c849e472fce7900fefc87b5ea\transformed\material-icons-extended-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-extended-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\aaebbe2c849e472fce7900fefc87b5ea\transformed\material-icons-extended-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\58d43837b7dd17fb76f9bf4208c3a8a6\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.material:material-icons-core-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\58d43837b7dd17fb76f9bf4208c3a8a6\transformed\material-icons-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\ee095365ff17382a8801236dbdf11afe\transformed\ui-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.ui:ui-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\ee095365ff17382a8801236dbdf11afe\transformed\ui-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\381718e72bf9618542f6f00b71158b6b\transformed\foundation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.foundation:foundation-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\381718e72bf9618542f6f00b71158b6b\transformed\foundation-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9df4cc460525c729472aefe6d62c5fa5\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9df4cc460525c729472aefe6d62c5fa5\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.media:media:1.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\2ec2c79a6370712b4b4f03932205be83\transformed\media-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.media:media:1.7.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\2ec2c79a6370712b4b4f03932205be83\transformed\media-1.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\14c7a9e84c02aa5664137a5b4c735151\transformed\recyclerview-1.3.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\14c7a9e84c02aa5664137a5b4c735151\transformed\recyclerview-1.3.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\06149e238817e5da10dced75388bbf46\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\06149e238817e5da10dced75388bbf46\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\7aa0cb32b6b02ebeba16ba7d1e4aeab6\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\7aa0cb32b6b02ebeba16ba7d1e4aeab6\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\a3621ec90f92eeecdf6075fbbdc05d63\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\a3621ec90f92eeecdf6075fbbdc05d63\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\131c877360af6b27c46b5a51256420b0\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\131c877360af6b27c46b5a51256420b0\transformed\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\489112943730fb65074e4515da74e040\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\489112943730fb65074e4515da74e040\transformed\autofill-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\9a15306e98574929f1ecc20f5dd6140b\transformed\graphics-path-1.0.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.graphics:graphics-path:1.0.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\9a15306e98574929f1ecc20f5dd6140b\transformed\graphics-path-1.0.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\5e43ffff08d276296926ad66870f0ea6\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\5e43ffff08d276296926ad66870f0ea6\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.core:core-ktx:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\8e750f9cb4df20f8e3019d1fb17aa2a4\transformed\core-ktx-1.13.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.core:core-ktx:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\8e750f9cb4df20f8e3019d1fb17aa2a4\transformed\core-ktx-1.13.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\6a2cd976e8e21f5d7bd20f6a6f2445f7\transformed\room-runtime-2.6.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\6a2cd976e8e21f5d7bd20f6a6f2445f7\transformed\room-runtime-2.6.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\5dab15eb27610410688875453377f420\transformed\room-ktx-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.room:room-ktx:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\5dab15eb27610410688875453377f420\transformed\room-ktx-2.6.1\AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\c8f16fb0efced40bb28059a4efef7cd4\transformed\datastore-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-core-android:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\c8f16fb0efced40bb28059a4efef7cd4\transformed\datastore-core-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.datastore:datastore-android:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\b1248f880ec5affcae6bbb51bfcd8c9a\transformed\datastore-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-android:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\b1248f880ec5affcae6bbb51bfcd8c9a\transformed\datastore-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\5c6bcd449fa06c92a338b3769dc988f6\transformed\datastore-preferences-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.datastore:datastore-preferences-android:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\5c6bcd449fa06c92a338b3769dc988f6\transformed\datastore-preferences-release\AndroidManifest.xml:20:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\c62ed09d60ef0222e789adb19ffa1a71\transformed\runtime-saveable-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-saveable-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\c62ed09d60ef0222e789adb19ffa1a71\transformed\runtime-saveable-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\0ab59daf0a20f07af992f2a07fc9725a\transformed\runtime-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.compose.runtime:runtime-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\0ab59daf0a20f07af992f2a07fc9725a\transformed\runtime-release\AndroidManifest.xml:5:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\be26da182ed7afb6299144e7cc1f5d49\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.4.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\be26da182ed7afb6299144e7cc1f5d49\transformed\sqlite-framework-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\dbcd469ffedddad447acc5b8a1e9446e\transformed\sqlite-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.4.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\dbcd469ffedddad447acc5b8a1e9446e\transformed\sqlite-2.4.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\eed047342f08d939effd14ab087fa357\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.annotation:annotation-experimental:1.4.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\eed047342f08d939effd14ab087fa357\transformed\annotation-experimental-1.4.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\27498cc87f701014f84ef9282ea25cc6\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\27498cc87f701014f84ef9282ea25cc6\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\8f794804fefcd61bdb3ca5d7b76fe3e6\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\8f794804fefcd61bdb3ca5d7b76fe3e6\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\84893c91d9c655f687fc3f3856fb9ff2\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\84893c91d9c655f687fc3f3856fb9ff2\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\d052d1b460a346d13ff262d0360f4e50\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\d052d1b460a346d13ff262d0360f4e50\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\763fcfe200666a245e5c8549437a6fa8\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\763fcfe200666a245e5c8549437a6fa8\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\b4925b0f15623bb94773fcb8965bceea\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\b4925b0f15623bb94773fcb8965bceea\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\fb21ca4775d9b7ae49a86fa70142006b\transformed\exifinterface-1.3.7\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\fb21ca4775d9b7ae49a86fa70142006b\transformed\exifinterface-1.3.7\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.dagger:dagger-lint-aar:2.51.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\364fed666015121813d205860801d80c\transformed\dagger-lint-aar-2.51.1\AndroidManifest.xml:18:3-42
+MERGED from [com.google.dagger:dagger-lint-aar:2.51.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\364fed666015121813d205860801d80c\transformed\dagger-lint-aar-2.51.1\AndroidManifest.xml:18:3-42
+	android:targetSdkVersion
+		INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\kanjo\Downloads\IPTVStreamPlayer\home\claude\IPTVStreamPlayer\app\src\main\AndroidManifest.xml
+activity#androidx.compose.ui.tooling.PreviewActivity
+ADDED from [androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\67208207a7999021372da74a8f3cebac\transformed\ui-tooling-release\AndroidManifest.xml:23:9-25:39
+	android:exported
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\67208207a7999021372da74a8f3cebac\transformed\ui-tooling-release\AndroidManifest.xml:25:13-36
+	android:name
+		ADDED from [androidx.compose.ui:ui-tooling-android:1.7.5] C:\Users\kanjo\.gradle\caches\8.9\transforms\67208207a7999021372da74a8f3cebac\transformed\ui-tooling-release\AndroidManifest.xml:24:13-71
+provider#androidx.startup.InitializationProvider
+ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9df4cc460525c729472aefe6d62c5fa5\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.emoji2:emoji2:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9df4cc460525c729472aefe6d62c5fa5\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:24:9-32:20
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\763fcfe200666a245e5c8549437a6fa8\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\763fcfe200666a245e5c8549437a6fa8\transformed\startup-runtime-1.1.1\AndroidManifest.xml:26:9-30:34
+	tools:node
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:28:13-31
+	android:authorities
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:26:13-68
+	android:exported
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:27:13-37
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:25:13-67
+meta-data#androidx.lifecycle.ProcessLifecycleInitializer
+ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.lifecycle:lifecycle-process:2.8.7] C:\Users\kanjo\.gradle\caches\8.9\transforms\171763987792a0605a366e1d28e7b103\transformed\lifecycle-process-2.8.7\AndroidManifest.xml:30:17-78
+meta-data#androidx.emoji2.text.EmojiCompatInitializer
+ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9df4cc460525c729472aefe6d62c5fa5\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9df4cc460525c729472aefe6d62c5fa5\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.emoji2:emoji2:1.3.0] C:\Users\kanjo\.gradle\caches\8.9\transforms\9df4cc460525c729472aefe6d62c5fa5\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+permission#com.iptvstream.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+	android:protectionLevel
+		ADDED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+	android:name
+		ADDED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+uses-permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+uses-permission#com.iptvstream.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
+ADDED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+	android:name
+		ADDED from [androidx.core:core:1.13.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\a2007c605594eb549405c759f585c7c4\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\6a2cd976e8e21f5d7bd20f6a6f2445f7\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\6a2cd976e8e21f5d7bd20f6a6f2445f7\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\6a2cd976e8e21f5d7bd20f6a6f2445f7\transformed\room-runtime-2.6.1\AndroidManifest.xml:28:13-60
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\6a2cd976e8e21f5d7bd20f6a6f2445f7\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.6.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\6a2cd976e8e21f5d7bd20f6a6f2445f7\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+meta-data#androidx.profileinstaller.ProfileInstallerInitializer
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:29:13-31:52
+	android:value
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:31:17-49
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:30:17-85
+receiver#androidx.profileinstaller.ProfileInstallReceiver
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:34:9-52:20
+	android:enabled
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:37:13-35
+	android:exported
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:38:13-36
+	android:permission
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:39:13-57
+	android:directBootAware
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:36:13-44
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:35:13-76
+intent-filter#action:name:androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:40:13-42:29
+action#androidx.profileinstaller.action.INSTALL_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:17-91
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:41:25-88
+intent-filter#action:name:androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:43:13-45:29
+action#androidx.profileinstaller.action.SKIP_FILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:17-85
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:44:25-82
+intent-filter#action:name:androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:46:13-48:29
+action#androidx.profileinstaller.action.SAVE_PROFILE
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:17-88
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:47:25-85
+intent-filter#action:name:androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:49:13-51:29
+action#androidx.profileinstaller.action.BENCHMARK_OPERATION
+ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:17-95
+	android:name
+		ADDED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\kanjo\.gradle\caches\8.9\transforms\89cd6468f5bc7e18cdcda95606963f42\transformed\profileinstaller-1.3.1\AndroidManifest.xml:50:25-92
