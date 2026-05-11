@@ -88,7 +88,7 @@ fun IPTVNavHost(repository: IPTVRepository) {
                 },
                 onNavigate = { route -> navController.navigate(route) },
                 onPlayStream = { type, id, url, title, icon ->
-                    navController.navigate(Screen.Player.createRoute(type, id, url, title, icon))
+                    navController.navigate(Screen.Player.createRoute(type, id))
                 },
                 onSettingsClick = {}
             )
@@ -109,7 +109,7 @@ fun IPTVNavHost(repository: IPTVRepository) {
                     })
                 },
                 onPlayStream = { type, id, url, title, icon ->
-                    navController.navigate(Screen.Player.createRoute(type, id, url, title, icon))
+                    navController.navigate(Screen.Player.createRoute(type, id))
                 },
                 onSettingsClick = {}
             )
@@ -130,7 +130,7 @@ fun IPTVNavHost(repository: IPTVRepository) {
                     })
                 },
                 onPlayMovie = { url, id, title, icon ->
-                    navController.navigate(Screen.Player.createRoute("movie", id, url, title, icon))
+                    navController.navigate(Screen.Player.createRoute("movie", id))
                 },
                 onSettingsClick = {}
             )
@@ -148,18 +148,17 @@ fun IPTVNavHost(repository: IPTVRepository) {
             route = Screen.Player.route,
             arguments = listOf(
                 navArgument("type") { type = NavType.StringType },
-                navArgument("id") { type = NavType.StringType },
-                navArgument("url") { type = NavType.StringType },
-                navArgument("title") { type = NavType.StringType },
-                navArgument("icon") { type = NavType.StringType }
+                navArgument("id") { type = NavType.StringType }
             )
         ) { backStackEntry ->
+            val type = backStackEntry.arguments?.getString("type") ?: ""
+            val id = backStackEntry.arguments?.getString("id") ?: ""
             PlayerScreen(
-                type = backStackEntry.arguments?.getString("type") ?: "",
-                id = backStackEntry.arguments?.getString("id") ?: "",
-                url = backStackEntry.arguments?.getString("url")?.decodeFromRoute() ?: "",
-                title = backStackEntry.arguments?.getString("title")?.decodeFromRoute() ?: "",
-                icon = backStackEntry.arguments?.getString("icon")?.decodeFromRoute() ?: "",
+                type = type,
+                id = id,
+                url = "",
+                title = "",
+                icon = "",
                 onBack = { navController.popBackStack() }
             )
         }
