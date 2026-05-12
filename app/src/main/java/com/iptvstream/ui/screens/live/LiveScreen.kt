@@ -12,14 +12,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.iptvstream.ui.PlayerHolder
+import com.iptvstream.ui.PlayItem
 import com.iptvstream.ui.components.*
 import com.iptvstream.ui.theme.*
 
@@ -60,11 +59,21 @@ fun LiveScreen(
                                     name = stream.name,
                                     icon = stream.stream_icon,
                                     onClick = {
-                                        val url = state.streamUrl(stream.stream_id)
+                                        val items = state.filteredStreams.map {
+                                            PlayItem(
+                                                type = "live",
+                                                id = it.stream_id.toString(),
+                                                url = state.streamUrl(it.stream_id),
+                                                title = it.name,
+                                                icon = it.stream_icon
+                                            )
+                                        }
+                                        val index = state.filteredStreams.indexOf(stream)
+                                        PlayerHolder.setPlaylist(items, index)
                                         onPlayStream(
                                             "live",
                                             stream.stream_id.toString(),
-                                            url,
+                                            state.streamUrl(stream.stream_id),
                                             stream.name,
                                             stream.stream_icon
                                         )
