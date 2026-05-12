@@ -27,7 +27,7 @@ fun HomeScreen(
             IPTVTopBar(
                 currentTab = currentTab,
                 onTabSelected = onTabSelected,
-                onSettingsClick = onSettingsClick,
+                onSettingsClick = viewModel::openDrawer,
                 onContinueWatchingClick = { }
             )
             HorizontalDivider(color = com.iptvstream.ui.theme.Divider, thickness = 0.5.dp)
@@ -92,6 +92,26 @@ fun HomeScreen(
                 }
                 Spacer(Modifier.height(16.dp))
             }
+        }
+
+        // Settings Drawer
+        if (state.isDrawerOpen) {
+            SettingsDrawer(
+                isVisible = true,
+                userInfo = state.userInfo,
+                expDate = state.expDate,
+                maxConnections = state.maxConnections,
+                isTrial = state.isTrial,
+                onDismiss = viewModel::closeDrawer,
+                onAccount = { viewModel.closeDrawer(); onNavigate("account") },
+                onRefresh = viewModel::refreshData,
+                onManagePlaylists = { viewModel.closeDrawer(); onNavigate("manage_playlists") },
+                onManageCategories = { viewModel.closeDrawer(); onNavigate("manage_categories") },
+                onSettings = { viewModel.closeDrawer(); onSettingsClick() },
+                onWhatsNew = { viewModel.closeDrawer() },
+                onMobileApp = { viewModel.closeDrawer() },
+                onNotes = { viewModel.closeDrawer() }
+            )
         }
     }
 }
