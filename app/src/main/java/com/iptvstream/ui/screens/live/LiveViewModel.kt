@@ -7,6 +7,7 @@ import com.iptvstream.data.repository.IPTVRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,7 +20,8 @@ data class LiveState(
     val isLoading: Boolean = true,
     val baseUrl: String = "",
     val username: String = "",
-    val password: String = ""
+    val password: String = "",
+    val favoriteIds: Set<String> = emptySet()
 ) {
     fun streamUrl(streamId: Int) = if (baseUrl.isNotBlank())
         "${baseUrl.trimEnd('/')}/live/$username/$password/$streamId.ts" else ""
@@ -48,18 +50,22 @@ class LiveViewModel @Inject constructor(
             val categories = repository.getLiveCategories(playlist).getOrDefault(emptyList())
             val streams = repository.getLiveStreams(playlist).getOrDefault(emptyList())
 
+            val favorites = try {
+                repository.getFavoritesByType("live").first().map { it.streamId }.toSet()
+            } catch (e: Exception) { emptySet() }
+
             _state.value = _state.value.copy(
                 categories = categories,
                 allStreams = streams,
                 filteredStreams = streams,
+                favoriteIds = favorites,
                 isLoading = false
             )
         }
     }
 
     fun selectCategory(categoryId: String) {
-        val s = _state.value
-        _state.value = s.copy(selectedCategoryId = categoryId)
+        _state.value = _state.value.copy(selectedCategoryId = categoryId)
         filterStreams()
     }
 
@@ -70,14 +76,34 @@ class LiveViewModel @Inject constructor(
 
     private fun filterStreams() {
         val s = _state.value
-        val filtered = s.allStreams
-            .filter { stream ->
-                (s.selectedCategoryId.isEmpty() || s.selectedCategoryId == "favorites" ||
-                        stream.category_id == s.selectedCategoryId)
-            }
-            .filter { stream ->
-                s.searchQuery.isEmpty() || stream.name.contains(s.searchQuery, ignoreCase = true)
-            }
+        val byCategory = when (s.selectedCategoryId) {
+            "" -> s.allStreams
+            "favorites" -> s.allStreams.filter { it.stream_id.toString() in s.favoriteIds }
+            else -> s.allStreams.filter { it.category_id == s.selectedCategoryId }
+        }
+        val filtered = byCategory.filter {
+            s.searchQuery.isEmpty() || it.name.contains(s.searchQuery, ignoreCase = true)
+        }
         _state.value = _state.value.copy(filteredStreams = filtered)
+    }
+
+    fun toggleFavorite(stream: LiveStream) {
+        viewModelScope.launch {
+            val id = stream.stream_id.toString()
+            if (id in _state.value.favoriteIds) {
+                repository.removeFavorite(id)
+                _state.value = _state.value.copy(favoriteIds = _state.value.favoriteIds - id)
+            } else {
+                repository.addFavorite(Favorite(
+                    streamId = id,
+                    streamName = stream.name,
+                    streamIcon = stream.stream_icon,
+                    streamType = "live",
+                    categoryId = stream.category_id
+                ))
+                _state.value = _state.value.copy(favoriteIds = _state.value.favoriteIds + id)
+            }
+            filterStreams()
+        }
     }
 }
