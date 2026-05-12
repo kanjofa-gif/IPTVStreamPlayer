@@ -12,12 +12,16 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.iptvstream.data.model.VodStream
@@ -91,44 +95,47 @@ fun MoviesScreen(
         }
 
         state.selectedMovie?.let { movie ->
-            MovieDetailDialog(
-                movie = movie,
-                watchProgress = state.watchProgress,
-                isFavorite = state.isFavorite,
-                onDismiss = viewModel::dismissDetail,
-                onPlay = {
-                    val url = state.movieUrl(movie.stream_id, movie.container_extension)
-                    onPlayMovie(url, movie.stream_id.toString(), movie.name, movie.stream_icon)
-                    viewModel.dismissDetail()
-                },
-                onPlayNew = {
-                    val url = state.movieUrl(movie.stream_id, movie.container_extension)
-                    onPlayMovie(url, movie.stream_id.toString(), movie.name, movie.stream_icon)
-                    viewModel.dismissDetail()
-                },
-                onToggleFavorite = viewModel::toggleFavorite,
-                onRemoveProgress = viewModel::removeProgress
-            )
+            Dialog(
+                onDismissRequest = viewModel::dismissDetail,
+                properties = DialogProperties(
+                    dismissOnBackPress = true,
+                    dismissOnClickOutside = true,
+                    usePlatformDefaultWidth = false
+                )
+            ) {
+                MovieDetailContent(
+                    movie = movie,
+                    isFavorite = state.isFavorite,
+                    onDismiss = viewModel::dismissDetail,
+                    onPlay = {
+                        val url = state.movieUrl(movie.stream_id, movie.container_extension)
+                        onPlayMovie(url, movie.stream_id.toString(), movie.name, movie.stream_icon)
+                        viewModel.dismissDetail()
+                    },
+                    onToggleFavorite = viewModel::toggleFavorite
+                )
+            }
         }
     }
 }
 
 @Composable
-fun MovieDetailDialog(
+fun MovieDetailContent(
     movie: VodStream,
-    watchProgress: Long?,
     isFavorite: Boolean,
     onDismiss: () -> Unit,
     onPlay: () -> Unit,
-    onPlayNew: () -> Unit,
-    onToggleFavorite: () -> Unit,
-    onRemoveProgress: () -> Unit
+    onToggleFavorite: () -> Unit
 ) {
+    val playFocus = remember { FocusRequester() }
+    LaunchedEffect(Unit) {
+        try { playFocus.requestFocus() } catch (e: Exception) {}
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black.copy(alpha = 0.85f))
-            .clickable(onClick = onDismiss),
+            .background(Color.Black.copy(alpha = 0.92f)),
         contentAlignment = Alignment.Center
     ) {
         Row(
@@ -136,7 +143,6 @@ fun MovieDetailDialog(
                 .fillMaxWidth(0.85f)
                 .clip(RoundedCornerShape(16.dp))
                 .background(Surface)
-                .clickable { }
                 .padding(24.dp),
             horizontalArrangement = Arrangement.spacedBy(24.dp)
         ) {
@@ -158,29 +164,8 @@ fun MovieDetailDialog(
             ) {
                 Text(movie.name, color = TextPrimary, fontSize = 22.sp, fontWeight = FontWeight.Bold, textAlign = TextAlign.End)
 
-                val genre = movie.genre ?: ""
-                val duration = movie.duration ?: ""
-                if (genre.isNotBlank() || duration.isNotBlank()) {
-                    Text(
-                        text = listOf(duration, genre).filter { it.isNotBlank() }.joinToString(" · "),
-                        color = TextSecondary, fontSize = 14.sp
-                    )
-                }
-
-                Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    OutlinedButton(
-                        onClick = onToggleFavorite,
-                        colors = ButtonDefaults.outlinedButtonColors(contentColor = if (isFavorite) AccentOrange else TextPrimary),
-                        border = BorderStroke(1.dp, if (isFavorite) AccentOrange else Color(0xFF444444))
-                    ) {
-                        Icon(if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder, null, modifier = Modifier.size(18.dp))
-                    }
-
-                    if (!movie.youtube_trailer.isNullOrBlank()) {
-                        OutlinedButton(onClick = {}) {
-                            Text("المقطع الدعائي", fontSize = 13.sp)
-                        }
-                    }
+                if (!movie.plot.isNullOrBlank()) {
+                    Text(movie.plot!!, color = TextSecondary, fontSize = 13.sp, textAlign = TextAlign.End, maxLines = 4)
                 }
 
                 Spacer(Modifier.height(8.dp))
@@ -188,37 +173,36 @@ fun MovieDetailDialog(
                 Button(
                     onClick = onPlay,
                     colors = ButtonDefaults.buttonColors(containerColor = Primary),
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth().focusRequester(playFocus)
                 ) {
-                    Icon(Icons.Default.PlayArrow, null)
+                    Icon(Icons.Default.PlayArrow, null, tint = Color.White)
                     Spacer(Modifier.width(8.dp))
-                    Text("تشغيل", fontSize = 15.sp)
+                    Text("تشغيل", fontSize = 15.sp, color = Color.White)
                 }
 
                 OutlinedButton(
-                    onClick = onPlayNew,
+                    onClick = onToggleFavorite,
                     modifier = Modifier.fillMaxWidth(),
                     border = BorderStroke(1.dp, Color(0xFF444444))
                 ) {
-                    Icon(Icons.Default.Refresh, null, modifier = Modifier.size(18.dp), tint = TextPrimary)
+                    Icon(
+                        if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
+                        null,
+                        tint = if (isFavorite) AccentOrange else TextPrimary,
+                        modifier = Modifier.size(18.dp)
+                    )
                     Spacer(Modifier.width(8.dp))
-                    Text("ابدأ من جديد", color = TextPrimary)
+                    Text(if (isFavorite) "إزالة من المفضلة" else "إضافة للمفضلة", color = TextPrimary)
                 }
 
-                if (watchProgress != null) {
-                    OutlinedButton(
-                        onClick = onRemoveProgress,
-                        modifier = Modifier.fillMaxWidth(),
-                        border = BorderStroke(1.dp, Color(0xFF444444))
-                    ) {
-                        Icon(Icons.Default.Close, null, modifier = Modifier.size(18.dp), tint = AccentRed)
-                        Spacer(Modifier.width(8.dp))
-                        Text("إزالة من متابعة المشاهدة", color = AccentRed)
-                    }
-                }
-
-                if (!movie.plot.isNullOrBlank()) {
-                    Text(movie.plot!!, color = TextSecondary, fontSize = 13.sp, textAlign = TextAlign.End, maxLines = 4)
+                OutlinedButton(
+                    onClick = onDismiss,
+                    modifier = Modifier.fillMaxWidth(),
+                    border = BorderStroke(1.dp, Color(0xFF444444))
+                ) {
+                    Icon(Icons.Default.Close, null, modifier = Modifier.size(18.dp), tint = TextPrimary)
+                    Spacer(Modifier.width(8.dp))
+                    Text("إغلاق", color = TextPrimary)
                 }
             }
         }
