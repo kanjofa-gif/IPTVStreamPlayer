@@ -23,7 +23,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.*
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
@@ -33,6 +35,7 @@ import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
+import androidx.compose.ui.CompositionLocalProvider
 import coil.compose.AsyncImage
 import com.iptvstream.ui.PlayerHolder
 import kotlinx.coroutines.delay
@@ -55,10 +58,11 @@ fun PlayerScreen(
     var duration by remember { mutableStateOf(0L) }
     var isBuffering by remember { mutableStateOf(true) }
 
-    // Use state for the current playing item so we can change channels
-    var currentItem by remember { mutableStateOf(PlayerHolder.current ?: com.iptvstream.ui.PlayItem(type, id, url, title, icon)) }
+    var currentItem by remember {
+        mutableStateOf(PlayerHolder.current ?: com.iptvstream.ui.PlayItem(type, id, url, title, icon))
+    }
 
-    Log.d("SHooF", "PlayerScreen: type=${currentItem.type} url=${currentItem.url}")
+    Log.d("SHooF", "PlayerScreen url=${currentItem.url}")
 
     val exoPlayer = remember {
         ExoPlayer.Builder(context).build().apply {
@@ -68,9 +72,7 @@ fun PlayerScreen(
                     errorMessage = "خطأ ${error.errorCode}: ${error.message}"
                     Log.e("SHooF", "Player error", error)
                 }
-                override fun onIsPlayingChanged(playing: Boolean) {
-                    isPlaying = playing
-                }
+                override fun onIsPlayingChanged(playing: Boolean) { isPlaying = playing }
                 override fun onPlaybackStateChanged(state: Int) {
                     isBuffering = state == Player.STATE_BUFFERING
                 }
@@ -117,16 +119,13 @@ fun PlayerScreen(
                     )
                 }
                 exoPlayer.release()
-            } catch (e: Exception) { }
+            } catch (e: Exception) {}
         }
     }
 
-    fun goNext() {
-        PlayerHolder.next()?.let { currentItem = it }
-    }
-
-    fun goPrevious() {
-        PlayerHolder.previous()?.let { currentItem = it }
+    fun togglePlayPause() {
+        if (exoPlayer.isPlaying) exoPlayer.pause() else exoPlayer.play()
+        isControlsVisible = true
     }
 
     val focusRequester = remember { FocusRequester() }
@@ -145,18 +144,18 @@ fun PlayerScreen(
                 when (event.nativeKeyEvent.keyCode) {
                     KeyEvent.KEYCODE_DPAD_UP -> {
                         if (currentItem.type == "live") {
-                            goPrevious()
+                            PlayerHolder.previous()?.let { currentItem = it }
                             true
                         } else false
                     }
                     KeyEvent.KEYCODE_DPAD_DOWN -> {
                         if (currentItem.type == "live") {
-                            goNext()
+                            PlayerHolder.next()?.let { currentItem = it }
                             true
                         } else false
                     }
                     KeyEvent.KEYCODE_DPAD_CENTER, KeyEvent.KEYCODE_ENTER -> {
-                        isControlsVisible = !isControlsVisible
+                        togglePlayPause()
                         true
                     }
                     KeyEvent.KEYCODE_DPAD_LEFT -> {
@@ -173,8 +172,11 @@ fun PlayerScreen(
                             true
                         } else false
                     }
-                    KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE, KeyEvent.KEYCODE_SPACE -> {
-                        if (exoPlayer.isPlaying) exoPlayer.pause() else exoPlayer.play()
+                    KeyEvent.KEYCODE_MEDIA_PLAY,
+                    KeyEvent.KEYCODE_MEDIA_PAUSE,
+                    KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE,
+                    KeyEvent.KEYCODE_SPACE -> {
+                        togglePlayPause()
                         true
                     }
                     KeyEvent.KEYCODE_BACK -> {
@@ -232,17 +234,13 @@ fun PlayerScreen(
                 position = currentPosition,
                 duration = duration,
                 isPlaying = isPlaying,
-                hasNext = PlayerHolder.hasNext(),
-                hasPrevious = PlayerHolder.hasPrevious(),
-                onPlayPause = {
-                    if (exoPlayer.isPlaying) exoPlayer.pause() else exoPlayer.play()
-                },
+                onPlayPause = ::togglePlayPause,
                 onSeek = { exoPlayer.seekTo(it) },
                 onSeekForward = { exoPlayer.seekTo(exoPlayer.currentPosition + 10_000) },
                 onSeekBackward = { exoPlayer.seekTo((exoPlayer.currentPosition - 10_000).coerceAtLeast(0)) },
                 onRestart = { exoPlayer.seekTo(0) },
-                onNext = ::goNext,
-                onPrevious = ::goPrevious,
+                onNext = { PlayerHolder.next()?.let { currentItem = it } },
+                onPrevious = { PlayerHolder.previous()?.let { currentItem = it } },
                 onBack = onBack
             )
         }
@@ -257,8 +255,6 @@ fun PlayerControls(
     position: Long,
     duration: Long,
     isPlaying: Boolean,
-    hasNext: Boolean,
-    hasPrevious: Boolean,
     onPlayPause: () -> Unit,
     onSeek: (Long) -> Unit,
     onSeekForward: () -> Unit,
@@ -268,6 +264,8 @@ fun PlayerControls(
     onPrevious: () -> Unit,
     onBack: () -> Unit
 ) {
+    val playFocus = remember { FocusRequester() }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -281,55 +279,41 @@ fun PlayerControls(
                 )
             )
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .align(Alignment.TopStart)
-                .padding(20.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            IconButton(onClick = onBack) {
-                Icon(Icons.Default.ArrowBack, null, tint = Color.White, modifier = Modifier.size(32.dp))
-            }
-            Spacer(Modifier.width(8.dp))
+        // Title at top
+        if (title.isNotBlank()) {
             Text(
                 text = title,
                 color = Color.White,
-                fontSize = 20.sp,
+                fontSize = 22.sp,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier.align(Alignment.TopEnd).padding(end = 24.dp, top = 24.dp)
             )
         }
 
-        if (icon.isNotBlank() && title.isNotBlank()) {
-            Column(
-                modifier = Modifier
-                    .align(Alignment.CenterEnd)
-                    .padding(end = 32.dp, top = 80.dp)
-                    .width(160.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                AsyncImage(
-                    model = icon,
-                    contentDescription = title,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier
-                        .width(140.dp)
-                        .aspectRatio(2f / 3f)
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(Color.DarkGray)
-                )
-                Spacer(Modifier.height(8.dp))
-                Text(
-                    text = title,
-                    color = Color.White,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    maxLines = 2
-                )
-            }
+        IconButton(
+            onClick = onBack,
+            modifier = Modifier.align(Alignment.TopStart).padding(16.dp)
+        ) {
+            Icon(Icons.Default.ArrowBack, null, tint = Color.White, modifier = Modifier.size(32.dp))
         }
 
+        // Poster on side for movies/series
+        if (icon.isNotBlank() && title.isNotBlank() && type != "live") {
+            AsyncImage(
+                model = icon,
+                contentDescription = title,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier
+                    .align(Alignment.CenterEnd)
+                    .padding(end = 32.dp)
+                    .width(120.dp)
+                    .aspectRatio(2f / 3f)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color.DarkGray)
+            )
+        }
+
+        // Bottom controls
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -337,62 +321,68 @@ fun PlayerControls(
                 .padding(24.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
+            // Progress bar (RTL for movies/series, hidden for live)
             if (type != "live") {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(12.dp)
-                ) {
-                    Text(formatDuration(position), color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Medium)
-                    val progress = if (duration > 0) position.toFloat() / duration.toFloat() else 0f
-                    Slider(
-                        value = progress.coerceIn(0f, 1f),
-                        onValueChange = { onSeek((it * duration).toLong()) },
-                        modifier = Modifier.weight(1f),
-                        colors = SliderDefaults.colors(
-                            thumbColor = Color.White,
-                            activeTrackColor = Color(0xFF2196F3),
-                            inactiveTrackColor = Color.White.copy(alpha = 0.3f)
+                CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    ) {
+                        Text(formatDuration(position), color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+                        val progress = if (duration > 0) position.toFloat() / duration.toFloat() else 0f
+                        Slider(
+                            value = progress.coerceIn(0f, 1f),
+                            onValueChange = { onSeek((it * duration).toLong()) },
+                            modifier = Modifier.weight(1f),
+                            colors = SliderDefaults.colors(
+                                thumbColor = Color.White,
+                                activeTrackColor = Color(0xFF2196F3),
+                                inactiveTrackColor = Color.White.copy(alpha = 0.3f)
+                            )
                         )
-                    )
-                    Text(formatDuration(duration), color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+                        Text(formatDuration(duration), color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+                    }
                 }
             } else {
-                Row(
+                Box(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
+                    contentAlignment = Alignment.Center
                 ) {
                     Box(
                         modifier = Modifier
                             .background(Color.Red.copy(alpha = 0.8f), RoundedCornerShape(6.dp))
-                            .padding(horizontal = 12.dp, vertical = 4.dp)
+                            .padding(horizontal = 16.dp, vertical = 6.dp)
                     ) {
-                        Text("● مباشر", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                        Text("● مباشر", color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Bold)
                     }
                 }
             }
 
+            // Controls row
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if (hasPrevious) {
-                    ControlButton(icon = Icons.Default.SkipPrevious, label = if (type == "live") "السابقة" else "السابق", onClick = onPrevious)
-                    Spacer(Modifier.width(16.dp))
-                }
+                ControlButton(
+                    icon = Icons.Default.SkipPrevious,
+                    label = if (type == "live") "السابقة" else "السابق",
+                    onClick = onPrevious
+                )
+                Spacer(Modifier.width(20.dp))
 
                 if (type != "live") {
-                    ControlButton(icon = Icons.Default.Replay, label = "إعادة", onClick = onRestart)
-                    Spacer(Modifier.width(16.dp))
                     ControlButton(icon = Icons.Default.Replay10, label = "10 ث", onClick = onSeekBackward)
-                    Spacer(Modifier.width(16.dp))
+                    Spacer(Modifier.width(20.dp))
                 }
 
+                // Big play/pause button
                 Box(
                     modifier = Modifier
-                        .size(72.dp)
+                        .size(80.dp)
                         .clip(CircleShape)
                         .background(Color.White)
+                        .focusRequester(playFocus)
                         .focusable()
                         .clickable(onClick = onPlayPause),
                     contentAlignment = Alignment.Center
@@ -401,19 +391,23 @@ fun PlayerControls(
                         if (isPlaying) Icons.Default.Pause else Icons.Default.PlayArrow,
                         null,
                         tint = Color.Black,
-                        modifier = Modifier.size(40.dp)
+                        modifier = Modifier.size(44.dp)
                     )
                 }
 
                 if (type != "live") {
-                    Spacer(Modifier.width(16.dp))
+                    Spacer(Modifier.width(20.dp))
                     ControlButton(icon = Icons.Default.Forward10, label = "10 ث", onClick = onSeekForward)
+                    Spacer(Modifier.width(20.dp))
+                    ControlButton(icon = Icons.Default.Replay, label = "إعادة", onClick = onRestart)
                 }
 
-                if (hasNext) {
-                    Spacer(Modifier.width(16.dp))
-                    ControlButton(icon = Icons.Default.SkipNext, label = if (type == "live") "التالية" else "التالي", onClick = onNext)
-                }
+                Spacer(Modifier.width(20.dp))
+                ControlButton(
+                    icon = Icons.Default.SkipNext,
+                    label = if (type == "live") "التالية" else "التالي",
+                    onClick = onNext
+                )
             }
         }
     }
