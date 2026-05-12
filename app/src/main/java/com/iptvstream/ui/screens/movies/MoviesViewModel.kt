@@ -7,6 +7,7 @@ import com.iptvstream.data.repository.IPTVRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,7 +22,9 @@ data class MoviesState(
     val isLoading: Boolean = true,
     val baseUrl: String = "",
     val username: String = "",
-    val password: String = ""
+    val password: String = "",
+    val favoriteIds: Set<String> = emptySet(),
+    val progressIds: Set<String> = emptySet()
 ) {
     fun movieUrl(streamId: Int, ext: String) =
         "${baseUrl.trimEnd('/')}/movie/$username/$password/$streamId.$ext"
@@ -49,12 +52,25 @@ class MoviesViewModel @Inject constructor(
 
             val categories = repository.getVodCategories(playlist).getOrDefault(emptyList())
             val movies = repository.getVodStreams(playlist).getOrDefault(emptyList())
-
             val sorted = movies.sortedByDescending { it.added }
+
+            val favorites = try {
+                repository.getFavoritesByType("movie").first().map { it.streamId }.toSet()
+            } catch (e: Exception) { emptySet() }
+
+            val progress = try {
+                repository.getRecentlyWatched().first()
+                    .filter { it.streamType == "movie" }
+                    .map { it.streamId }
+                    .toSet()
+            } catch (e: Exception) { emptySet() }
+
             _state.value = _state.value.copy(
                 categories = categories,
                 allMovies = sorted,
                 filteredMovies = sorted,
+                favoriteIds = favorites,
+                progressIds = progress,
                 isLoading = false
             )
         }
@@ -64,7 +80,8 @@ class MoviesViewModel @Inject constructor(
         val s = _state.value
         val filtered = when (categoryId) {
             "latest" -> s.allMovies
-            "favorites" -> s.allMovies // filtered from Room
+            "favorites" -> s.allMovies.filter { it.stream_id.toString() in s.favoriteIds }
+            "continue" -> s.allMovies.filter { it.stream_id.toString() in s.progressIds }
             else -> s.allMovies.filter { it.category_id == categoryId }
         }
         _state.value = s.copy(selectedCategoryId = categoryId, filteredMovies = filtered)
@@ -89,18 +106,26 @@ class MoviesViewModel @Inject constructor(
     fun toggleFavorite() {
         val movie = _state.value.selectedMovie ?: return
         viewModelScope.launch {
+            val id = movie.stream_id.toString()
             if (_state.value.isFavorite) {
-                repository.removeFavorite(movie.stream_id.toString())
+                repository.removeFavorite(id)
+                _state.value = _state.value.copy(
+                    isFavorite = false,
+                    favoriteIds = _state.value.favoriteIds - id
+                )
             } else {
                 repository.addFavorite(Favorite(
-                    streamId = movie.stream_id.toString(),
+                    streamId = id,
                     streamName = movie.name,
                     streamIcon = movie.stream_icon,
                     streamType = "movie",
                     categoryId = movie.category_id
                 ))
+                _state.value = _state.value.copy(
+                    isFavorite = true,
+                    favoriteIds = _state.value.favoriteIds + id
+                )
             }
-            _state.value = _state.value.copy(isFavorite = !_state.value.isFavorite)
         }
     }
 
