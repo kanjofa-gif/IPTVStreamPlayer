@@ -66,7 +66,8 @@ fun HomeScreen(
                                 rating = if (movie.rating_5based > 0) String.format("%.1f", movie.rating_5based) else "",
                                 year = "",
                                 onClick = {
-                                    onTabSelected(NavTab.MOVIES)
+                                    val url = viewModel.movieUrl(movie.stream_id, movie.container_extension)
+                                    onPlayStream("movie", movie.stream_id.toString(), url, movie.name, movie.stream_icon)
                                 }
                             )
                         }
