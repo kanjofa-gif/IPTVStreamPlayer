@@ -5,13 +5,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.BrokenImage
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -32,16 +32,22 @@ fun ChannelCard(
     width: Dp = 140.dp,
     height: Dp = 100.dp
 ) {
+    var isFocused by remember { mutableStateOf(false) }
+    val active = isFocused || isSelected
+
     Box(
         modifier = modifier
             .size(width, height)
+            .scale(if (active) 1.08f else 1f)
             .clip(RoundedCornerShape(12.dp))
-            .background(CardBackground)
+            .background(if (active) Primary.copy(alpha = 0.25f) else CardBackground)
             .border(
-                width = if (isSelected) 2.dp else 0.5.dp,
-                color = if (isSelected) FocusBorder else Color(0xFF2A2A2A),
+                width = if (active) 3.dp else 0.5.dp,
+                color = if (active) Primary else Color(0xFF2A2A2A),
                 shape = RoundedCornerShape(12.dp)
             )
+            .onFocusChanged { isFocused = it.isFocused }
+            .focusable()
             .clickable(onClick = onClick),
         contentAlignment = Alignment.Center
     ) {
@@ -80,9 +86,14 @@ fun MovieCard(
     width: Dp = 140.dp,
     height: Dp = 200.dp
 ) {
+    var isFocused by remember { mutableStateOf(false) }
+
     Column(
         modifier = modifier
             .width(width)
+            .scale(if (isFocused) 1.08f else 1f)
+            .onFocusChanged { isFocused = it.isFocused }
+            .focusable()
             .clickable(onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -92,6 +103,11 @@ fun MovieCard(
                 .height(height)
                 .clip(RoundedCornerShape(10.dp))
                 .background(CardBackground)
+                .border(
+                    width = if (isFocused) 3.dp else 0.dp,
+                    color = if (isFocused) Primary else Color.Transparent,
+                    shape = RoundedCornerShape(10.dp)
+                )
         ) {
             AsyncImage(
                 model = icon,
@@ -114,8 +130,9 @@ fun MovieCard(
         Spacer(Modifier.height(6.dp))
         Text(
             text = if (year.isNotBlank()) "$name ($year)" else name,
-            color = TextPrimary,
+            color = if (isFocused) Primary else TextPrimary,
             fontSize = 12.sp,
+            fontWeight = if (isFocused) FontWeight.Bold else FontWeight.Normal,
             maxLines = 2,
             overflow = TextOverflow.Ellipsis,
             textAlign = androidx.compose.ui.text.style.TextAlign.Center,
@@ -164,25 +181,36 @@ fun CategoryListItem(
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
+    var isFocused by remember { mutableStateOf(false) }
+    val active = isFocused || isSelected
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(8.dp))
-            .background(if (isSelected) Primary.copy(alpha = 0.2f) else Color.Transparent)
+            .background(
+                when {
+                    isFocused -> Primary.copy(alpha = 0.35f)
+                    isSelected -> Primary.copy(alpha = 0.2f)
+                    else -> Color.Transparent
+                }
+            )
             .border(
-                width = if (isSelected) 1.dp else 0.dp,
-                color = if (isSelected) Primary else Color.Transparent,
+                width = if (active) 1.dp else 0.dp,
+                color = if (active) Primary else Color.Transparent,
                 shape = RoundedCornerShape(8.dp)
             )
+            .onFocusChanged { isFocused = it.isFocused }
+            .focusable()
             .clickable(onClick = onClick)
             .padding(horizontal = 16.dp, vertical = 12.dp),
         contentAlignment = Alignment.CenterEnd
     ) {
         Text(
             text = name,
-            color = if (isSelected) TextPrimary else TextSecondary,
+            color = if (active) Color.White else TextSecondary,
             fontSize = 15.sp,
-            fontWeight = if (isSelected) FontWeight.Medium else FontWeight.Normal
+            fontWeight = if (active) FontWeight.Bold else FontWeight.Normal
         )
     }
 }
