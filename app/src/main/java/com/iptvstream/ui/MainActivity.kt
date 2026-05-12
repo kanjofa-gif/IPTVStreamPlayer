@@ -4,9 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.*
-import androidx.navigation.NavType
 import androidx.navigation.compose.*
-import androidx.navigation.navArgument
 import com.iptvstream.data.repository.IPTVRepository
 import com.iptvstream.ui.components.NavTab
 import com.iptvstream.ui.screens.home.HomeScreen
@@ -88,7 +86,8 @@ fun IPTVNavHost(repository: IPTVRepository) {
                 },
                 onNavigate = { route -> navController.navigate(route) },
                 onPlayStream = { type, id, url, title, icon ->
-                    navController.navigate(Screen.Player.createRoute(type, id, url))
+                    PlayerHolder.set(type, id, url, title, icon)
+                    navController.navigate(Screen.Player.route)
                 },
                 onSettingsClick = {}
             )
@@ -109,7 +108,8 @@ fun IPTVNavHost(repository: IPTVRepository) {
                     })
                 },
                 onPlayStream = { type, id, url, title, icon ->
-                    navController.navigate(Screen.Player.createRoute(type, id, url))
+                    PlayerHolder.set(type, id, url, title, icon)
+                    navController.navigate(Screen.Player.route)
                 },
                 onSettingsClick = {}
             )
@@ -124,42 +124,3 @@ fun IPTVNavHost(repository: IPTVRepository) {
                         NavTab.HOME -> Screen.Home.route
                         NavTab.LIVE -> Screen.Live.route
                         NavTab.SERIES -> Screen.Series.route
-                        NavTab.SEARCH -> Screen.Search.route
-                        NavTab.EPG -> Screen.Epg.route
-                        else -> Screen.Movies.route
-                    })
-                },
-                onPlayMovie = { url, id, title, icon ->
-                    navController.navigate(Screen.Player.createRoute("movie", id, url))
-                },
-                onSettingsClick = {}
-            )
-        }
-
-        composable(Screen.Settings.route) {
-            SettingsScreen(onBack = { navController.popBackStack() })
-        }
-
-        composable(Screen.ManagePlaylists.route) {
-            ManagePlaylistsScreen(onBack = { navController.popBackStack() })
-        }
-
-        composable(
-            route = Screen.Player.route,
-            arguments = listOf(
-                navArgument("type") { type = NavType.StringType },
-                navArgument("id") { type = NavType.StringType },
-                navArgument("url") { type = NavType.StringType }
-            )
-        ) { backStackEntry ->
-            PlayerScreen(
-                type = backStackEntry.arguments?.getString("type") ?: "",
-                id = backStackEntry.arguments?.getString("id") ?: "",
-                url = backStackEntry.arguments?.getString("url")?.decodeFromRoute() ?: "",
-                title = "",
-                icon = "",
-                onBack = { navController.popBackStack() }
-            )
-        }
-    }
-}
