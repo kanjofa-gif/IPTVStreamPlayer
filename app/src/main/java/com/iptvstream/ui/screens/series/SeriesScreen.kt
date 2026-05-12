@@ -24,6 +24,8 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.iptvstream.data.model.Episode
+import com.iptvstream.ui.PlayItem
+import com.iptvstream.ui.PlayerHolder
 import com.iptvstream.ui.components.*
 import com.iptvstream.ui.theme.*
 
@@ -112,8 +114,20 @@ fun SeriesScreen(
                     isLoading = state.isLoadingInfo,
                     seriesInfo = state.seriesInfo,
                     onDismiss = viewModel::dismissDetail,
-                    onPlayEpisode = { episode ->
-                        val url = viewModel.episodeUrl(episode.id, episode.container_extension ?: "mkv")
+                    onPlayEpisode = { episode, allEpisodes ->
+                        val ext = episode.container_extension ?: "mkv"
+                        val items = allEpisodes.map { ep ->
+                            PlayItem(
+                                type = "series",
+                                id = ep.id,
+                                url = viewModel.episodeUrl(ep.id, ep.container_extension ?: "mkv"),
+                                title = ep.title ?: series.name,
+                                icon = series.cover
+                            )
+                        }
+                        val index = allEpisodes.indexOf(episode)
+                        PlayerHolder.setPlaylist(items, index)
+                        val url = viewModel.episodeUrl(episode.id, ext)
                         onPlayEpisode(url, episode.id, episode.title ?: series.name, series.cover)
                         viewModel.dismissDetail()
                     }
@@ -131,7 +145,7 @@ fun SeriesDetailContent(
     isLoading: Boolean,
     seriesInfo: com.iptvstream.data.model.SeriesInfo?,
     onDismiss: () -> Unit,
-    onPlayEpisode: (Episode) -> Unit
+    onPlayEpisode: (Episode, List<Episode>) -> Unit
 ) {
     var selectedSeason by remember { mutableStateOf("1") }
 
@@ -242,7 +256,7 @@ fun SeriesDetailContent(
                             EpisodeCard(
                                 episode = episode,
                                 seriesCover = cover,
-                                onClick = { onPlayEpisode(episode) }
+                                onClick = { onPlayEpisode(episode, episodes) }
                             )
                         }
                     }
