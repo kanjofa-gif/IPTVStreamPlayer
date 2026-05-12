@@ -12,8 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -150,7 +149,6 @@ fun SeriesDetailContent(
                 .background(Surface)
                 .padding(24.dp)
         ) {
-            // Header
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(20.dp)
@@ -216,7 +214,6 @@ fun SeriesDetailContent(
                         Text("لا توجد حلقات", color = TextSecondary, fontSize = 16.sp)
                     }
                 } else {
-                    // Seasons tabs
                     if (selectedSeason !in seasons) selectedSeason = seasons.first()
 
                     LazyRow(
@@ -234,7 +231,6 @@ fun SeriesDetailContent(
 
                     Spacer(Modifier.height(16.dp))
 
-                    // Episodes grid
                     val episodes = seriesInfo.episodes?.get(selectedSeason) ?: emptyList()
                     LazyVerticalGrid(
                         columns = GridCells.Adaptive(minSize = 280.dp),
@@ -268,6 +264,8 @@ fun SeasonTab(
         modifier = Modifier
             .clip(RoundedCornerShape(8.dp))
             .background(if (active) Primary else SurfaceVariant)
+            .onFocusChanged { isFocused = it.isFocused }
+            .focusable()
             .clickable(onClick = onClick)
             .padding(horizontal = 20.dp, vertical = 10.dp)
     ) {
@@ -298,7 +296,7 @@ fun EpisodeCard(
                 color = if (isFocused) Primary else Color.Transparent,
                 shape = RoundedCornerShape(10.dp)
             )
-            .androidx.compose.ui.focus.onFocusChanged { isFocused = it.isFocused }
+            .onFocusChanged { isFocused = it.isFocused }
             .focusable()
             .clickable(onClick = onClick)
             .padding(12.dp),
@@ -333,13 +331,10 @@ fun EpisodeCard(
                 fontWeight = FontWeight.SemiBold,
                 maxLines = 1
             )
-            if (!episode.info?.plot.isNullOrBlank()) {
-                Text(
-                    episode.info?.plot ?: "",
-                    color = TextSecondary,
-                    fontSize = 11.sp,
-                    maxLines = 2
-                )
+            episode.info?.plot?.let { plotText ->
+                if (plotText.isNotBlank()) {
+                    Text(plotText, color = TextSecondary, fontSize = 11.sp, maxLines = 2)
+                }
             }
         }
     }
