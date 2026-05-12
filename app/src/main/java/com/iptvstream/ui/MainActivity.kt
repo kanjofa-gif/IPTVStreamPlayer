@@ -13,6 +13,7 @@ import com.iptvstream.ui.screens.loading.LoadingScreen
 import com.iptvstream.ui.screens.movies.MoviesScreen
 import com.iptvstream.ui.screens.player.PlayerScreen
 import com.iptvstream.ui.screens.playlists.ManagePlaylistsScreen
+import com.iptvstream.ui.screens.series.SeriesScreen
 import com.iptvstream.ui.screens.settings.SettingsScreen
 import com.iptvstream.ui.screens.setup.SetupScreen
 import com.iptvstream.ui.theme.IPTVTheme
@@ -78,7 +79,7 @@ fun IPTVNavHost(repository: IPTVRepository) {
                     when (tab) {
                         NavTab.LIVE -> navController.navigate(Screen.Live.route)
                         NavTab.MOVIES -> navController.navigate(Screen.Movies.route)
-                        NavTab.SERIES -> navController.navigate(Screen.Movies.route)
+                        NavTab.SERIES -> navController.navigate(Screen.Series.route)
                         else -> {}
                     }
                 },
@@ -99,6 +100,7 @@ fun IPTVNavHost(repository: IPTVRepository) {
                     when (tab) {
                         NavTab.HOME -> navController.navigate(Screen.Home.route)
                         NavTab.MOVIES -> navController.navigate(Screen.Movies.route)
+                        NavTab.SERIES -> navController.navigate(Screen.Series.route)
                         else -> {}
                     }
                 },
@@ -118,11 +120,32 @@ fun IPTVNavHost(repository: IPTVRepository) {
                     when (tab) {
                         NavTab.HOME -> navController.navigate(Screen.Home.route)
                         NavTab.LIVE -> navController.navigate(Screen.Live.route)
+                        NavTab.SERIES -> navController.navigate(Screen.Series.route)
                         else -> {}
                     }
                 },
                 onPlayMovie = { url, id, title, icon ->
                     PlayerHolder.setSingle("movie", id, url, title, icon)
+                    navController.navigate(Screen.Player.route)
+                },
+                onSettingsClick = { navController.navigate(Screen.Settings.route) }
+            )
+        }
+
+        composable(Screen.Series.route) {
+            SeriesScreen(
+                currentTab = NavTab.SERIES,
+                onTabSelected = { tab ->
+                    currentTab = tab
+                    when (tab) {
+                        NavTab.HOME -> navController.navigate(Screen.Home.route)
+                        NavTab.LIVE -> navController.navigate(Screen.Live.route)
+                        NavTab.MOVIES -> navController.navigate(Screen.Movies.route)
+                        else -> {}
+                    }
+                },
+                onPlayEpisode = { url, id, title, icon ->
+                    PlayerHolder.setSingle("series", id, url, title, icon)
                     navController.navigate(Screen.Player.route)
                 },
                 onSettingsClick = { navController.navigate(Screen.Settings.route) }
