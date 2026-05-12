@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
@@ -35,7 +36,6 @@ import androidx.media3.common.PlaybackException
 import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
-import androidx.compose.ui.CompositionLocalProvider
 import coil.compose.AsyncImage
 import com.iptvstream.ui.PlayerHolder
 import kotlinx.coroutines.delay
@@ -192,6 +192,7 @@ fun PlayerScreen(
                 PlayerView(ctx).apply {
                     player = exoPlayer
                     useController = false
+                    keepScreenOn = true
                     layoutParams = FrameLayout.LayoutParams(
                         ViewGroup.LayoutParams.MATCH_PARENT,
                         ViewGroup.LayoutParams.MATCH_PARENT
@@ -279,7 +280,6 @@ fun PlayerControls(
                 )
             )
     ) {
-        // Title at top
         if (title.isNotBlank()) {
             Text(
                 text = title,
@@ -297,7 +297,6 @@ fun PlayerControls(
             Icon(Icons.Default.ArrowBack, null, tint = Color.White, modifier = Modifier.size(32.dp))
         }
 
-        // Poster on side for movies/series
         if (icon.isNotBlank() && title.isNotBlank() && type != "live") {
             AsyncImage(
                 model = icon,
@@ -313,7 +312,6 @@ fun PlayerControls(
             )
         }
 
-        // Bottom controls
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -321,7 +319,6 @@ fun PlayerControls(
                 .padding(24.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Progress bar (RTL for movies/series, hidden for live)
             if (type != "live") {
                 CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
                     Row(
@@ -358,7 +355,6 @@ fun PlayerControls(
                 }
             }
 
-            // Controls row
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center,
@@ -376,7 +372,6 @@ fun PlayerControls(
                     Spacer(Modifier.width(20.dp))
                 }
 
-                // Big play/pause button
                 Box(
                     modifier = Modifier
                         .size(80.dp)
