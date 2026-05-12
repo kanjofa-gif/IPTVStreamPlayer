@@ -79,17 +79,15 @@ fun IPTVNavHost(repository: IPTVRepository) {
                         NavTab.LIVE -> navController.navigate(Screen.Live.route)
                         NavTab.MOVIES -> navController.navigate(Screen.Movies.route)
                         NavTab.SERIES -> navController.navigate(Screen.Movies.route)
-                        NavTab.SEARCH -> {}
-                        NavTab.EPG -> {}
                         else -> {}
                     }
                 },
                 onNavigate = { },
                 onPlayStream = { type, id, url, title, icon ->
-                    PlayerHolder.set(type, id, url, title, icon)
+                    PlayerHolder.setSingle(type, id, url, title, icon)
                     navController.navigate(Screen.Player.route)
                 },
-                onSettingsClick = {}
+                onSettingsClick = { navController.navigate(Screen.Settings.route) }
             )
         }
 
@@ -105,10 +103,10 @@ fun IPTVNavHost(repository: IPTVRepository) {
                     }
                 },
                 onPlayStream = { type, id, url, title, icon ->
-                    PlayerHolder.set(type, id, url, title, icon)
+                    PlayerHolder.setSingle(type, id, url, title, icon)
                     navController.navigate(Screen.Player.route)
                 },
-                onSettingsClick = {}
+                onSettingsClick = { navController.navigate(Screen.Settings.route) }
             )
         }
 
@@ -124,10 +122,10 @@ fun IPTVNavHost(repository: IPTVRepository) {
                     }
                 },
                 onPlayMovie = { url, id, title, icon ->
-                    PlayerHolder.set("movie", id, url, title, icon)
+                    PlayerHolder.setSingle("movie", id, url, title, icon)
                     navController.navigate(Screen.Player.route)
                 },
-                onSettingsClick = {}
+                onSettingsClick = { navController.navigate(Screen.Settings.route) }
             )
         }
 
@@ -140,12 +138,16 @@ fun IPTVNavHost(repository: IPTVRepository) {
         }
 
         composable(Screen.Player.route) {
+            val item = PlayerHolder.current ?: run {
+                navController.popBackStack()
+                return@composable
+            }
             PlayerScreen(
-                type = PlayerHolder.type,
-                id = PlayerHolder.id,
-                url = PlayerHolder.url,
-                title = PlayerHolder.title,
-                icon = PlayerHolder.icon,
+                type = item.type,
+                id = item.id,
+                url = item.url,
+                title = item.title,
+                icon = item.icon,
                 onBack = { navController.popBackStack() }
             )
         }
