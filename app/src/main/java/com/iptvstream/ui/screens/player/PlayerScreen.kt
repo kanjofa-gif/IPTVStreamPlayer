@@ -1,6 +1,7 @@
 package com.iptvstream.ui.screens.player
 
 import android.util.Log
+import android.view.KeyEvent
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.compose.animation.*
@@ -19,6 +20,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.key.*
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -32,6 +34,7 @@ import androidx.media3.common.Player
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import coil.compose.AsyncImage
+import com.iptvstream.ui.PlayerHolder
 import kotlinx.coroutines.delay
 
 @Composable
@@ -52,7 +55,10 @@ fun PlayerScreen(
     var duration by remember { mutableStateOf(0L) }
     var isBuffering by remember { mutableStateOf(true) }
 
-    Log.d("SHooF", "PlayerScreen: type=$type id=$id url=$url title=$title")
+    // Use state for the current playing item so we can change channels
+    var currentItem by remember { mutableStateOf(PlayerHolder.current ?: com.iptvstream.ui.PlayItem(type, id, url, title, icon)) }
+
+    Log.d("SHooF", "PlayerScreen: type=${currentItem.type} url=${currentItem.url}")
 
     val exoPlayer = remember {
         ExoPlayer.Builder(context).build().apply {
@@ -72,10 +78,11 @@ fun PlayerScreen(
         }
     }
 
-    LaunchedEffect(url) {
+    LaunchedEffect(currentItem.url) {
         try {
-            if (url.isNotBlank()) {
-                exoPlayer.setMediaItem(MediaItem.fromUri(url))
+            errorMessage = null
+            if (currentItem.url.isNotBlank()) {
+                exoPlayer.setMediaItem(MediaItem.fromUri(currentItem.url))
                 exoPlayer.prepare()
             }
         } catch (e: Exception) {
@@ -103,7 +110,8 @@ fun PlayerScreen(
             try {
                 if (exoPlayer.currentPosition > 0) {
                     viewModel.saveProgress(
-                        id = id, name = title, icon = icon, url = url, type = type,
+                        id = currentItem.id, name = currentItem.title, icon = currentItem.icon,
+                        url = currentItem.url, type = currentItem.type,
                         position = exoPlayer.currentPosition,
                         duration = exoPlayer.duration.takeIf { it > 0 } ?: 0
                     )
@@ -113,11 +121,69 @@ fun PlayerScreen(
         }
     }
 
+    fun goNext() {
+        PlayerHolder.next()?.let { currentItem = it }
+    }
+
+    fun goPrevious() {
+        PlayerHolder.previous()?.let { currentItem = it }
+    }
+
+    val focusRequester = remember { FocusRequester() }
+    LaunchedEffect(Unit) {
+        try { focusRequester.requestFocus() } catch (e: Exception) {}
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.Black)
-            .clickable { isControlsVisible = !isControlsVisible }
+            .focusRequester(focusRequester)
+            .focusable()
+            .onKeyEvent { event ->
+                if (event.type != KeyEventType.KeyDown) return@onKeyEvent false
+                when (event.nativeKeyEvent.keyCode) {
+                    KeyEvent.KEYCODE_DPAD_UP -> {
+                        if (currentItem.type == "live") {
+                            goPrevious()
+                            true
+                        } else false
+                    }
+                    KeyEvent.KEYCODE_DPAD_DOWN -> {
+                        if (currentItem.type == "live") {
+                            goNext()
+                            true
+                        } else false
+                    }
+                    KeyEvent.KEYCODE_DPAD_CENTER, KeyEvent.KEYCODE_ENTER -> {
+                        isControlsVisible = !isControlsVisible
+                        true
+                    }
+                    KeyEvent.KEYCODE_DPAD_LEFT -> {
+                        if (currentItem.type != "live") {
+                            exoPlayer.seekTo((exoPlayer.currentPosition - 10_000).coerceAtLeast(0))
+                            isControlsVisible = true
+                            true
+                        } else false
+                    }
+                    KeyEvent.KEYCODE_DPAD_RIGHT -> {
+                        if (currentItem.type != "live") {
+                            exoPlayer.seekTo(exoPlayer.currentPosition + 10_000)
+                            isControlsVisible = true
+                            true
+                        } else false
+                    }
+                    KeyEvent.KEYCODE_MEDIA_PLAY_PAUSE, KeyEvent.KEYCODE_SPACE -> {
+                        if (exoPlayer.isPlaying) exoPlayer.pause() else exoPlayer.play()
+                        true
+                    }
+                    KeyEvent.KEYCODE_BACK -> {
+                        onBack()
+                        true
+                    }
+                    else -> false
+                }
+            }
     ) {
         AndroidView(
             factory = { ctx ->
@@ -160,11 +226,14 @@ fun PlayerScreen(
             exit = fadeOut()
         ) {
             PlayerControls(
-                title = title,
-                icon = icon,
+                title = currentItem.title,
+                icon = currentItem.icon,
+                type = currentItem.type,
                 position = currentPosition,
                 duration = duration,
                 isPlaying = isPlaying,
+                hasNext = PlayerHolder.hasNext(),
+                hasPrevious = PlayerHolder.hasPrevious(),
                 onPlayPause = {
                     if (exoPlayer.isPlaying) exoPlayer.pause() else exoPlayer.play()
                 },
@@ -172,6 +241,8 @@ fun PlayerScreen(
                 onSeekForward = { exoPlayer.seekTo(exoPlayer.currentPosition + 10_000) },
                 onSeekBackward = { exoPlayer.seekTo((exoPlayer.currentPosition - 10_000).coerceAtLeast(0)) },
                 onRestart = { exoPlayer.seekTo(0) },
+                onNext = ::goNext,
+                onPrevious = ::goPrevious,
                 onBack = onBack
             )
         }
@@ -182,21 +253,21 @@ fun PlayerScreen(
 fun PlayerControls(
     title: String,
     icon: String,
+    type: String,
     position: Long,
     duration: Long,
     isPlaying: Boolean,
+    hasNext: Boolean,
+    hasPrevious: Boolean,
     onPlayPause: () -> Unit,
     onSeek: (Long) -> Unit,
     onSeekForward: () -> Unit,
     onSeekBackward: () -> Unit,
     onRestart: () -> Unit,
+    onNext: () -> Unit,
+    onPrevious: () -> Unit,
     onBack: () -> Unit
 ) {
-    val playPauseFocus = remember { FocusRequester() }
-    LaunchedEffect(Unit) {
-        try { playPauseFocus.requestFocus() } catch (e: Exception) {}
-    }
-
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -210,7 +281,6 @@ fun PlayerControls(
                 )
             )
     ) {
-        // Top bar: back button + title
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -231,7 +301,6 @@ fun PlayerControls(
             )
         }
 
-        // Right side: poster + info
         if (icon.isNotBlank() && title.isNotBlank()) {
             Column(
                 modifier = Modifier
@@ -261,7 +330,6 @@ fun PlayerControls(
             }
         }
 
-        // Bottom controls
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -269,69 +337,62 @@ fun PlayerControls(
                 .padding(24.dp),
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // Progress bar with time
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                Text(
-                    text = formatDuration(position),
-                    color = Color.White,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Medium
-                )
-
-                val progress = if (duration > 0) position.toFloat() / duration.toFloat() else 0f
-                Slider(
-                    value = progress.coerceIn(0f, 1f),
-                    onValueChange = { onSeek((it * duration).toLong()) },
-                    modifier = Modifier.weight(1f),
-                    colors = SliderDefaults.colors(
-                        thumbColor = Color.White,
-                        activeTrackColor = Color(0xFF2196F3),
-                        inactiveTrackColor = Color.White.copy(alpha = 0.3f)
+            if (type != "live") {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ) {
+                    Text(formatDuration(position), color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+                    val progress = if (duration > 0) position.toFloat() / duration.toFloat() else 0f
+                    Slider(
+                        value = progress.coerceIn(0f, 1f),
+                        onValueChange = { onSeek((it * duration).toLong()) },
+                        modifier = Modifier.weight(1f),
+                        colors = SliderDefaults.colors(
+                            thumbColor = Color.White,
+                            activeTrackColor = Color(0xFF2196F3),
+                            inactiveTrackColor = Color.White.copy(alpha = 0.3f)
+                        )
                     )
-                )
-
-                Text(
-                    text = formatDuration(duration),
-                    color = Color.White,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Medium
-                )
+                    Text(formatDuration(duration), color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Medium)
+                }
+            } else {
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .background(Color.Red.copy(alpha = 0.8f), RoundedCornerShape(6.dp))
+                            .padding(horizontal = 12.dp, vertical = 4.dp)
+                    ) {
+                        Text("● مباشر", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                    }
+                }
             }
 
-            // Control buttons row
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Restart
-                ControlButton(
-                    icon = Icons.Default.SkipPrevious,
-                    label = "ابدأ من جديد",
-                    onClick = onRestart
-                )
+                if (hasPrevious) {
+                    ControlButton(icon = Icons.Default.SkipPrevious, label = if (type == "live") "السابقة" else "السابق", onClick = onPrevious)
+                    Spacer(Modifier.width(16.dp))
+                }
 
-                Spacer(Modifier.width(24.dp))
+                if (type != "live") {
+                    ControlButton(icon = Icons.Default.Replay, label = "إعادة", onClick = onRestart)
+                    Spacer(Modifier.width(16.dp))
+                    ControlButton(icon = Icons.Default.Replay10, label = "10 ث", onClick = onSeekBackward)
+                    Spacer(Modifier.width(16.dp))
+                }
 
-                // Backward 10s
-                ControlButton(
-                    icon = Icons.Default.Replay10,
-                    label = "10 ث",
-                    onClick = onSeekBackward
-                )
-
-                Spacer(Modifier.width(24.dp))
-
-                // Play/Pause (large center button)
                 Box(
                     modifier = Modifier
                         .size(72.dp)
                         .clip(CircleShape)
                         .background(Color.White)
-                        .focusRequester(playPauseFocus)
                         .focusable()
                         .clickable(onClick = onPlayPause),
                     contentAlignment = Alignment.Center
@@ -344,23 +405,15 @@ fun PlayerControls(
                     )
                 }
 
-                Spacer(Modifier.width(24.dp))
+                if (type != "live") {
+                    Spacer(Modifier.width(16.dp))
+                    ControlButton(icon = Icons.Default.Forward10, label = "10 ث", onClick = onSeekForward)
+                }
 
-                // Forward 10s
-                ControlButton(
-                    icon = Icons.Default.Forward10,
-                    label = "10 ث",
-                    onClick = onSeekForward
-                )
-
-                Spacer(Modifier.width(24.dp))
-
-                // External player placeholder
-                ControlButton(
-                    icon = Icons.Default.OpenInNew,
-                    label = "خارجي",
-                    onClick = { }
-                )
+                if (hasNext) {
+                    Spacer(Modifier.width(16.dp))
+                    ControlButton(icon = Icons.Default.SkipNext, label = if (type == "live") "التالية" else "التالي", onClick = onNext)
+                }
             }
         }
     }
@@ -377,25 +430,15 @@ fun ControlButton(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .clip(RoundedCornerShape(8.dp))
-            .background(if (isFocused) Color.White.copy(alpha = 0.2f) else Color.Transparent)
+            .background(if (isFocused) Color.White.copy(alpha = 0.25f) else Color.Transparent)
             .onFocusChanged { isFocused = it.isFocused }
             .focusable()
             .clickable(onClick = onClick)
             .padding(horizontal = 12.dp, vertical = 8.dp)
     ) {
-        Icon(
-            icon,
-            null,
-            tint = Color.White,
-            modifier = Modifier.size(if (isFocused) 32.dp else 28.dp)
-        )
+        Icon(icon, null, tint = Color.White, modifier = Modifier.size(if (isFocused) 32.dp else 28.dp))
         Spacer(Modifier.height(4.dp))
-        Text(
-            label,
-            color = Color.White,
-            fontSize = 11.sp,
-            fontWeight = if (isFocused) FontWeight.Bold else FontWeight.Normal
-        )
+        Text(label, color = Color.White, fontSize = 11.sp, fontWeight = if (isFocused) FontWeight.Bold else FontWeight.Normal)
     }
 }
 
