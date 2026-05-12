@@ -20,7 +20,8 @@ data class HomeState(
     val maxConnections: String = "0",
     val isTrial: Boolean = false,
     val isDrawerOpen: Boolean = false,
-    val isLoading: Boolean = false
+    val isLoading: Boolean = false,
+    val playlist: Playlist? = null
 )
 
 @HiltViewModel
@@ -47,8 +48,8 @@ class HomeViewModel @Inject constructor(
     private fun loadContent() {
         viewModelScope.launch {
             val playlist = repository.getSelectedPlaylist() ?: return@launch
+            _state.value = _state.value.copy(playlist = playlist)
 
-            // Load user info
             repository.authenticate(playlist).onSuccess { auth ->
                 val ui = auth.user_info
                 val expDateFormatted = ui.exp_date?.let {
@@ -65,14 +66,12 @@ class HomeViewModel @Inject constructor(
                 )
             }
 
-            // Load latest movies (last 20)
             repository.getVodStreams(playlist).onSuccess { movies ->
                 _state.value = _state.value.copy(
                     latestMovies = movies.sortedByDescending { it.added }.take(20)
                 )
             }
 
-            // Load latest series (last 20)
             repository.getSeries(playlist).onSuccess { series ->
                 _state.value = _state.value.copy(
                     latestSeries = series.sortedByDescending { it.last_modified }.take(20)
@@ -81,9 +80,15 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun movieUrl(streamId: Int, ext: String?): String {
+        val playlist = _state.value.playlist ?: return ""
+        val base = playlist.url.trimEnd('/')
+        val extension = ext ?: "mkv"
+        return "$base/movie/${playlist.username}/${playlist.password}/$streamId.$extension"
+    }
+
     fun openDrawer() { _state.value = _state.value.copy(isDrawerOpen = true) }
     fun closeDrawer() { _state.value = _state.value.copy(isDrawerOpen = false) }
-
     fun refreshData() {
         viewModelScope.launch {
             closeDrawer()
