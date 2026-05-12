@@ -25,6 +25,8 @@ import androidx.compose.ui.window.DialogProperties
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.iptvstream.data.model.VodStream
+import com.iptvstream.ui.PlayItem
+import com.iptvstream.ui.PlayerHolder
 import com.iptvstream.ui.components.*
 import com.iptvstream.ui.theme.*
 
@@ -105,14 +107,43 @@ fun MoviesScreen(
             ) {
                 MovieDetailContent(
                     movie = movie,
+                    watchProgress = state.watchProgress,
                     isFavorite = state.isFavorite,
                     onDismiss = viewModel::dismissDetail,
                     onPlay = {
+                        val items = state.filteredMovies.map {
+                            PlayItem(
+                                type = "movie",
+                                id = it.stream_id.toString(),
+                                url = state.movieUrl(it.stream_id, it.container_extension),
+                                title = it.name,
+                                icon = it.stream_icon
+                            )
+                        }
+                        val index = state.filteredMovies.indexOf(movie)
+                        PlayerHolder.setPlaylist(items, index)
                         val url = state.movieUrl(movie.stream_id, movie.container_extension)
                         onPlayMovie(url, movie.stream_id.toString(), movie.name, movie.stream_icon)
                         viewModel.dismissDetail()
                     },
-                    onToggleFavorite = viewModel::toggleFavorite
+                    onPlayNew = {
+                        val items = state.filteredMovies.map {
+                            PlayItem(
+                                type = "movie",
+                                id = it.stream_id.toString(),
+                                url = state.movieUrl(it.stream_id, it.container_extension),
+                                title = it.name,
+                                icon = it.stream_icon
+                            )
+                        }
+                        val index = state.filteredMovies.indexOf(movie)
+                        PlayerHolder.setPlaylist(items, index)
+                        val url = state.movieUrl(movie.stream_id, movie.container_extension)
+                        onPlayMovie(url, movie.stream_id.toString(), movie.name, movie.stream_icon)
+                        viewModel.dismissDetail()
+                    },
+                    onToggleFavorite = viewModel::toggleFavorite,
+                    onRemoveProgress = viewModel::removeProgress
                 )
             }
         }
@@ -122,10 +153,13 @@ fun MoviesScreen(
 @Composable
 fun MovieDetailContent(
     movie: VodStream,
+    watchProgress: Long?,
     isFavorite: Boolean,
     onDismiss: () -> Unit,
     onPlay: () -> Unit,
-    onToggleFavorite: () -> Unit
+    onPlayNew: () -> Unit,
+    onToggleFavorite: () -> Unit,
+    onRemoveProgress: () -> Unit
 ) {
     val playFocus = remember { FocusRequester() }
     LaunchedEffect(Unit) {
@@ -181,6 +215,16 @@ fun MovieDetailContent(
                 }
 
                 OutlinedButton(
+                    onClick = onPlayNew,
+                    modifier = Modifier.fillMaxWidth(),
+                    border = BorderStroke(1.dp, Color(0xFF444444))
+                ) {
+                    Icon(Icons.Default.Refresh, null, modifier = Modifier.size(18.dp), tint = TextPrimary)
+                    Spacer(Modifier.width(8.dp))
+                    Text("ابدأ من جديد", color = TextPrimary)
+                }
+
+                OutlinedButton(
                     onClick = onToggleFavorite,
                     modifier = Modifier.fillMaxWidth(),
                     border = BorderStroke(1.dp, Color(0xFF444444))
@@ -188,11 +232,23 @@ fun MovieDetailContent(
                     Icon(
                         if (isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
                         null,
-                        tint = if (isFavorite) AccentOrange else TextPrimary,
-                        modifier = Modifier.size(18.dp)
+                        modifier = Modifier.size(18.dp),
+                        tint = if (isFavorite) AccentOrange else TextPrimary
                     )
                     Spacer(Modifier.width(8.dp))
                     Text(if (isFavorite) "إزالة من المفضلة" else "إضافة للمفضلة", color = TextPrimary)
+                }
+
+                if (watchProgress != null) {
+                    OutlinedButton(
+                        onClick = onRemoveProgress,
+                        modifier = Modifier.fillMaxWidth(),
+                        border = BorderStroke(1.dp, Color(0xFF444444))
+                    ) {
+                        Icon(Icons.Default.Close, null, modifier = Modifier.size(18.dp), tint = AccentRed)
+                        Spacer(Modifier.width(8.dp))
+                        Text("إزالة من متابعة المشاهدة", color = AccentRed)
+                    }
                 }
 
                 OutlinedButton(
