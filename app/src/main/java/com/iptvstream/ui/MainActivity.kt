@@ -78,13 +78,13 @@ fun IPTVNavHost(repository: IPTVRepository) {
                     when (tab) {
                         NavTab.LIVE -> navController.navigate(Screen.Live.route)
                         NavTab.MOVIES -> navController.navigate(Screen.Movies.route)
-                        NavTab.SERIES -> navController.navigate(Screen.Series.route)
-                        NavTab.SEARCH -> navController.navigate(Screen.Search.route)
-                        NavTab.EPG -> navController.navigate(Screen.Epg.route)
+                        NavTab.SERIES -> navController.navigate(Screen.Movies.route)
+                        NavTab.SEARCH -> {}
+                        NavTab.EPG -> {}
                         else -> {}
                     }
                 },
-                onNavigate = { route -> navController.navigate(route) },
+                onNavigate = { },
                 onPlayStream = { type, id, url, title, icon ->
                     PlayerHolder.set(type, id, url, title, icon)
                     navController.navigate(Screen.Player.route)
@@ -98,14 +98,11 @@ fun IPTVNavHost(repository: IPTVRepository) {
                 currentTab = NavTab.LIVE,
                 onTabSelected = { tab ->
                     currentTab = tab
-                    navController.navigate(when (tab) {
-                        NavTab.HOME -> Screen.Home.route
-                        NavTab.MOVIES -> Screen.Movies.route
-                        NavTab.SERIES -> Screen.Series.route
-                        NavTab.SEARCH -> Screen.Search.route
-                        NavTab.EPG -> Screen.Epg.route
-                        else -> Screen.Live.route
-                    })
+                    when (tab) {
+                        NavTab.HOME -> navController.navigate(Screen.Home.route)
+                        NavTab.MOVIES -> navController.navigate(Screen.Movies.route)
+                        else -> {}
+                    }
                 },
                 onPlayStream = { type, id, url, title, icon ->
                     PlayerHolder.set(type, id, url, title, icon)
@@ -120,7 +117,37 @@ fun IPTVNavHost(repository: IPTVRepository) {
                 currentTab = NavTab.MOVIES,
                 onTabSelected = { tab ->
                     currentTab = tab
-                    navController.navigate(when (tab) {
-                        NavTab.HOME -> Screen.Home.route
-                        NavTab.LIVE -> Screen.Live.route
-                        NavTab.SERIES -> Screen.Series.route
+                    when (tab) {
+                        NavTab.HOME -> navController.navigate(Screen.Home.route)
+                        NavTab.LIVE -> navController.navigate(Screen.Live.route)
+                        else -> {}
+                    }
+                },
+                onPlayMovie = { url, id, title, icon ->
+                    PlayerHolder.set("movie", id, url, title, icon)
+                    navController.navigate(Screen.Player.route)
+                },
+                onSettingsClick = {}
+            )
+        }
+
+        composable(Screen.Settings.route) {
+            SettingsScreen(onBack = { navController.popBackStack() })
+        }
+
+        composable(Screen.ManagePlaylists.route) {
+            ManagePlaylistsScreen(onBack = { navController.popBackStack() })
+        }
+
+        composable(Screen.Player.route) {
+            PlayerScreen(
+                type = PlayerHolder.type,
+                id = PlayerHolder.id,
+                url = PlayerHolder.url,
+                title = PlayerHolder.title,
+                icon = PlayerHolder.icon,
+                onBack = { navController.popBackStack() }
+            )
+        }
+    }
+}
