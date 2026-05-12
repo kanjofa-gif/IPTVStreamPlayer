@@ -28,7 +28,7 @@ fun HomeScreen(
                 currentTab = currentTab,
                 onTabSelected = onTabSelected,
                 onSettingsClick = onSettingsClick,
-                onContinueWatchingClick = { onNavigate("player") }
+                onContinueWatchingClick = { }
             )
             HorizontalDivider(color = com.iptvstream.ui.theme.Divider, thickness = 0.5.dp)
             Column(
@@ -65,7 +65,9 @@ fun HomeScreen(
                                 icon = movie.stream_icon,
                                 rating = if (movie.rating_5based > 0) String.format("%.1f", movie.rating_5based) else "",
                                 year = "",
-                                onClick = { onNavigate("movies/${movie.stream_id}") }
+                                onClick = {
+                                    onTabSelected(NavTab.MOVIES)
+                                }
                             )
                         }
                     }
@@ -80,31 +82,15 @@ fun HomeScreen(
                                 name = series.name,
                                 icon = series.cover,
                                 rating = if (series.rating_5based > 0) String.format("%.1f", series.rating_5based) else "",
-                                onClick = { onNavigate("series/${series.series_id}") }
+                                onClick = {
+                                    onTabSelected(NavTab.SERIES)
+                                }
                             )
                         }
                     }
                 }
                 Spacer(Modifier.height(16.dp))
             }
-        }
-        if (state.isDrawerOpen) {
-            SettingsDrawer(
-                isVisible = true,
-                userInfo = state.userInfo,
-                expDate = state.expDate,
-                maxConnections = state.maxConnections,
-                isTrial = state.isTrial,
-                onDismiss = viewModel::closeDrawer,
-                onAccount = { viewModel.closeDrawer(); onNavigate("account") },
-                onRefresh = viewModel::refreshData,
-                onManagePlaylists = { viewModel.closeDrawer(); onNavigate("manage_playlists") },
-                onManageCategories = { viewModel.closeDrawer(); onNavigate("manage_categories/live") },
-                onSettings = { viewModel.closeDrawer(); onNavigate("settings") },
-                onWhatsNew = { viewModel.closeDrawer(); onNavigate("whats_new") },
-                onMobileApp = { viewModel.closeDrawer(); onNavigate("mobile_app") },
-                onNotes = { viewModel.closeDrawer() }
-            )
         }
     }
 }
