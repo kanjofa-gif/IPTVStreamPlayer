@@ -179,8 +179,13 @@ fun PlayerScreen(
                         true
                     }
                     KeyEvent.KEYCODE_BACK -> {
-                        onBack()
-                        true
+                        if (isControlsVisible) {
+                            isControlsVisible = false
+                            true
+                        } else {
+                            onBack()
+                            true
+                        }
                     }
                     else -> false
                 }
