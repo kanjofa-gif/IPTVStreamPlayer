@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- White sclera (outer) -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" />
+            <size android:width="90dp" android:height="90dp" />
+        </shape>
+    </item>
+
+    <!-- Blue iris -->
+    <item
+        android:left="6dp"
+        android:top="6dp"
+        android:right="6dp"
+        android:bottom="6dp">
+        <shape android:shape="oval">
+            <solid android:color="#1C58DC" />
+        </shape>
+    </item>
+
+    <!-- Dark pupil -->
+    <item
+        android:left="26dp"
+        android:top="26dp"
+        android:right="26dp"
+        android:bottom="26dp">
+        <shape android:shape="oval">
+            <solid android:color="#080E3C" />
+        </shape>
+    </item>
+
+    <!-- White highlight -->
+    <item
+        android:left="20dp"
+        android:top="18dp"
+        android:right="58dp"
+        android:bottom="58dp">
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+
+</layer-list>
