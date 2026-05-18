@@ -111,7 +111,7 @@ class SplashActivity : AppCompatActivity() {
             startActivity(Intent(this, MainActivity::class.java))
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
             finish()
-        }, 3800)
+        }, 5000)
     }
 
     override fun onDestroy() {
