@@ -216,9 +216,7 @@ fun SettingsDrawer(
                 DrawerMenuItem(Icons.Default.GridView, "إدارة قوائم التشغيل", false, onManagePlaylists)
                 DrawerMenuItem(Icons.Default.Tune, "إدارة الفئات", false, onManageCategories)
                 DrawerMenuItem(Icons.Default.Settings, "الإعدادات", false, onSettings)
-                DrawerMenuItem(Icons.Default.Star, "ما الجديد", false, onWhatsNew)
                 DrawerMenuItem(Icons.Default.PhoneAndroid, "النسخة المحمولة", false, onMobileApp)
-                DrawerMenuItem(Icons.Default.Comment, "ملاحظات", false, onNotes)
             }
         }
     }
