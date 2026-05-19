@@ -263,10 +263,10 @@ fun IPTVNavHost(
             }
 
             composable(Screen.AccountProfile.route) {
+                val vm: AccountViewModel = hiltViewModel()
                 AccountProfileScreen(
                     onManageLinkedAccounts = { navController.navigate(Screen.AccountLinked.route) },
                     onSignOut = {
-                        val vm: AccountViewModel = androidx.hilt.navigation.compose.hiltViewModel()
                         vm.signOut()
                         navController.popBackStack()
                     },
