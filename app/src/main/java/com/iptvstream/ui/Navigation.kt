@@ -14,8 +14,15 @@ sealed class Screen(val route: String) {
     data object ManageCategories : Screen("manage_categories/{type}") {
         fun createRoute(type: String) = "manage_categories/$type"
     }
-    data object Account : Screen("account")
-    data object Whats_New : Screen("whats_new")
+
+    // ─── Account flow screens ────────────────────────────────────────────────
+    data object AccountWelcome : Screen("account_welcome")
+    data object AccountQRCode : Screen("account_qr")
+    data object AccountConfirm : Screen("account_confirm")
+    data object AccountProfile : Screen("account_profile")
+    data object AccountLinked : Screen("account_linked")
+    data object TrialExpired : Screen("trial_expired")
+
     data object MobileApp : Screen("mobile_app")
     data object Player : Screen("player")
 }
