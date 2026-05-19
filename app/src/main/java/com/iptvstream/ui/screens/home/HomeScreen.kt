@@ -108,9 +108,7 @@ fun HomeScreen(
                 onManagePlaylists = { viewModel.closeDrawer(); onNavigate("manage_playlists") },
                 onManageCategories = { viewModel.closeDrawer(); onNavigate("manage_categories") },
                 onSettings = { viewModel.closeDrawer(); onSettingsClick() },
-                onWhatsNew = { viewModel.closeDrawer() },
-                onMobileApp = { viewModel.closeDrawer() },
-                onNotes = { viewModel.closeDrawer() }
+                onMobileApp = { viewModel.closeDrawer() }
             )
         }
     }
