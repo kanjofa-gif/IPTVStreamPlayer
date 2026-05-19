@@ -103,7 +103,7 @@ fun HomeScreen(
                 maxConnections = state.maxConnections,
                 isTrial = state.isTrial,
                 onDismiss = viewModel::closeDrawer,
-                onAccount = { viewModel.closeDrawer(); onNavigate("account") },
+                onAccount = { viewModel.closeDrawer(); onNavigate("account_welcome") },
                 onRefresh = viewModel::refreshData,
                 onManagePlaylists = { viewModel.closeDrawer(); onNavigate("manage_playlists") },
                 onManageCategories = { viewModel.closeDrawer(); onNavigate("manage_categories") },
