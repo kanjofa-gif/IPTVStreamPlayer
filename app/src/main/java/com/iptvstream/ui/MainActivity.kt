@@ -64,6 +64,8 @@ fun IPTVNavHost(
     var drawerVisible by remember { mutableStateOf(false) }
     var trialState by remember { mutableStateOf(TrialState.NOT_STARTED) }
     var userInfo by remember { mutableStateOf<com.iptvstream.data.model.UserInfo?>(null) }
+    var playlistName by remember { mutableStateOf<String?>(null) }
+    var isAccountSignedIn by remember { mutableStateOf(false) }
 
     val coroutineScope = rememberCoroutineScope()
 
@@ -317,7 +319,7 @@ fun IPTVNavHost(
         // Side drawer overlay
         SettingsDrawer(
             isVisible = drawerVisible,
-            userInfo = userInfo,
+            userInfo = userInfo?.copy(username = playlistName ?: userInfo?.username ?: ""),
             expDate = userInfo?.exp_date?.let { formatExpiry(it) } ?: "—",
             maxConnections = userInfo?.max_connections ?: "—",
             isTrial = userInfo?.is_trial == "1",
@@ -327,13 +329,9 @@ fun IPTVNavHost(
             onDismiss = { drawerVisible = false },
             onAccount = {
                 drawerVisible = false
-                // Route to profile if signed in, otherwise welcome
-                coroutineScope.launch {
-                    val acc = accountRepository.getAccount()
-                    val route = if (acc.isSignedIn) Screen.AccountProfile.route
-                                else Screen.AccountWelcome.route
-                    navController.navigate(route)
-                }
+                val route = if (isAccountSignedIn) Screen.AccountProfile.route
+                            else Screen.AccountWelcome.route
+                navController.navigate(route)
             },
             onRefresh = {
                 drawerVisible = false
@@ -362,9 +360,17 @@ fun IPTVNavHost(
     LaunchedEffect(Unit) {
         val playlist = repository.getSelectedPlaylist()
         if (playlist != null) {
+            playlistName = playlist.name
             repository.authenticate(playlist).onSuccess { auth ->
                 userInfo = auth.user_info
             }
+        }
+    }
+
+    // Track sign-in state for drawer's account action
+    LaunchedEffect(Unit) {
+        accountRepository.observeAccount().collect { acc ->
+            isAccountSignedIn = acc.isSignedIn
         }
     }
 }
