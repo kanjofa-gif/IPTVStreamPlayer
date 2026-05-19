@@ -155,6 +155,11 @@ fun TopBarIconButton(
     }
 }
 
+/**
+ * Settings drawer — opens from the RIGHT side (RTL appropriate).
+ *
+ * Items removed per request: "ما الجديد", "ملاحظات".
+ */
 @Composable
 fun SettingsDrawer(
     isVisible: Boolean,
@@ -162,15 +167,14 @@ fun SettingsDrawer(
     expDate: String,
     maxConnections: String,
     isTrial: Boolean,
+    trialDaysRemaining: Int? = null,
     onDismiss: () -> Unit,
     onAccount: () -> Unit,
     onRefresh: () -> Unit,
     onManagePlaylists: () -> Unit,
     onManageCategories: () -> Unit,
     onSettings: () -> Unit,
-    onWhatsNew: () -> Unit,
-    onMobileApp: () -> Unit,
-    onNotes: () -> Unit
+    onMobileApp: () -> Unit
 ) {
     if (!isVisible) return
 
@@ -180,44 +184,67 @@ fun SettingsDrawer(
             .background(Color.Black.copy(alpha = 0.7f))
             .clickable { onDismiss() }
     ) {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxHeight()
-                .width(340.dp)
-                .align(Alignment.CenterStart)
+                .width(360.dp)
+                .align(Alignment.CenterEnd) // ⬅ from the RIGHT (was CenterStart)
                 .background(Surface)
-                .clickable { }
-                .padding(vertical = 24.dp),
-            horizontalArrangement = Arrangement.End
+                .clickable { /* swallow clicks */ }
+                .padding(horizontal = 20.dp, vertical = 24.dp),
+            verticalArrangement = Arrangement.spacedBy(0.dp)
         ) {
+            // Subscription info card
             Column(
-                modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp),
-                verticalArrangement = Arrangement.spacedBy(0.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(SurfaceVariant, RoundedCornerShape(12.dp))
+                    .padding(16.dp),
+                horizontalAlignment = Alignment.End
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .background(SurfaceVariant, RoundedCornerShape(12.dp))
-                        .padding(16.dp),
-                    horizontalAlignment = Alignment.End
-                ) {
-                    SubscriptionRow("حالة اشتراك IPTV:", if (userInfo?.status == "Active") "Active ✓" else userInfo?.status ?: "-", AccentGreen)
-                    SubscriptionRow("الحد الأقصى للاتصالات:", maxConnections)
-                    SubscriptionRow("صالح حتى:", expDate)
-                    SubscriptionRow("نسخة تجريبية:", if (isTrial) "نعم" else "لا")
+                if (userInfo?.username?.isNotBlank() == true) {
+                    Text(
+                        userInfo.username,
+                        color = TextPrimary,
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Spacer(Modifier.height(8.dp))
+                    HorizontalDivider(color = Divider)
+                    Spacer(Modifier.height(8.dp))
                 }
+                SubscriptionRow(
+                    "حالة اشتراك IPTV:",
+                    if (userInfo?.status == "Active") "Active ✓" else userInfo?.status ?: "-",
+                    if (userInfo?.status == "Active") AccentGreen else AccentRed
+                )
+                SubscriptionRow("الحد الأقصى للاتصالات:", maxConnections)
+                SubscriptionRow("صالح حتى:", expDate)
+                SubscriptionRow("نسخة تجريبية:", if (isTrial) "نعم" else "لا")
 
-                Spacer(Modifier.height(12.dp))
-                HorizontalDivider(color = com.iptvstream.ui.theme.Divider)
-                Spacer(Modifier.height(8.dp))
-
-                DrawerMenuItem(Icons.Default.Person, "الحساب", true, onAccount)
-                DrawerMenuItem(Icons.Default.Refresh, "تحديث بيانات قائمة التشغيل", false, onRefresh)
-                DrawerMenuItem(Icons.Default.GridView, "إدارة قوائم التشغيل", false, onManagePlaylists)
-                DrawerMenuItem(Icons.Default.Tune, "إدارة الفئات", false, onManageCategories)
-                DrawerMenuItem(Icons.Default.Settings, "الإعدادات", false, onSettings)
-                DrawerMenuItem(Icons.Default.PhoneAndroid, "النسخة المحمولة", false, onMobileApp)
+                // Trial countdown (shown only when relevant)
+                if (trialDaysRemaining != null && trialDaysRemaining in 0..7) {
+                    Spacer(Modifier.height(8.dp))
+                    HorizontalDivider(color = Divider)
+                    Spacer(Modifier.height(8.dp))
+                    SubscriptionRow(
+                        "التجربة المجانية:",
+                        "$trialDaysRemaining ${if (trialDaysRemaining == 1) "يوم" else "أيام"}",
+                        AccentOrange
+                    )
+                }
             }
+
+            Spacer(Modifier.height(12.dp))
+            HorizontalDivider(color = Divider)
+            Spacer(Modifier.height(8.dp))
+
+            DrawerMenuItem(Icons.Default.Person, "الحساب", true, onAccount)
+            DrawerMenuItem(Icons.Default.Refresh, "تحديث بيانات قائمة التشغيل", false, onRefresh)
+            DrawerMenuItem(Icons.Default.GridView, "إدارة قوائم التشغيل", false, onManagePlaylists)
+            DrawerMenuItem(Icons.Default.Tune, "إدارة الفئات", false, onManageCategories)
+            DrawerMenuItem(Icons.Default.Settings, "الإعدادات", false, onSettings)
+            DrawerMenuItem(Icons.Default.PhoneAndroid, "النسخة المحمولة", false, onMobileApp)
         }
     }
 }
