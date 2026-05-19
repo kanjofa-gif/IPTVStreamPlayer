@@ -136,7 +136,17 @@ fun IPTVNavHost(
                 HomeScreen(
                     currentTab = NavTab.HOME,
                     onTabSelected = ::handleTabSelection,
-                    onNavigate = { },
+                    onNavigate = { route ->
+                        when (route) {
+                            "account_welcome" -> {
+                                val target = if (isAccountSignedIn) Screen.AccountProfile.route
+                                             else Screen.AccountWelcome.route
+                                navController.navigate(target)
+                            }
+                            "manage_playlists" -> navController.navigate(Screen.ManagePlaylists.route)
+                            "manage_categories" -> { /* TODO */ }
+                        }
+                    },
                     onPlayStream = { type, id, url, title, icon ->
                         PlayerHolder.setSingle(type, id, url, title, icon)
                         navController.navigate(Screen.Player.route)
