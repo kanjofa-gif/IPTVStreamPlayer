@@ -563,7 +563,7 @@ fun AccountLinkedScreen(
             LinkedProviderRow(
                 providerName = "Apple",
                 providerEmail = null,
-                icon = Icons.Default.Apple,
+                icon = Icons.Default.PhoneIphone,
                 isLinked = account.appleId != null,
                 onAction = { /* future implementation */ }
             )
