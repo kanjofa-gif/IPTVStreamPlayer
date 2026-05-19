@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "824515794405",
+    "project_id": "shoof-iptv",
+    "storage_bucket": "shoof-iptv.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824515794405:android:5697c4005132bfb56f8b0c",
+        "android_client_info": {
+          "package_name": "com.iptvstream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824515794405-klq3o9fam95k1fimfhjrnahpb96lhcpj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iptvstream",
+            "certificate_hash": "ba2ac691af96a848e6f905f8091bd62c13c7e594"
+          }
+        },
+        {
+          "client_id": "824515794405-1qb6kgrdopvgul9nuk3s2dgjse4dh9kh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzGd7NdLCMjHHQYyzLAQAVX5DE3uSZhI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824515794405-1qb6kgrdopvgul9nuk3s2dgjse4dh9kh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
